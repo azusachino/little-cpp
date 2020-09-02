@@ -64,6 +64,17 @@ lambda [capture](parameters)->return-type{body}
 
 字符串实际上是使用 null 字符 '\0' 终止的一维字符数组。
 char msg[] = "Hello" === char msg[] = {'H', 'e', 'l', 'l', 'o', '\0'};
+
+每一个变量都有一个内存位置，每一个内存位置都定义了可使用连字号（&）运算符访问的地址，它表示了在内存中的一个地址。
+& 符号的意思是取地址，也就是返回一个对象在内存中的地址。
+* 符号的意思是取得一个指针所指向的对象。 也就是如果一个指针保存着一个内存地址，那么它就返回在那个地址的对象。
+
+不存在空引用。引用必须连接到一块合法的内存。
+一旦引用被初始化为一个对象，就不能被指向到另一个对象。指针可以在任何时候指向到另一个对象。
+引用必须在创建时被初始化。指针可以在任何时间被初始化。
+
+struct 定义一种结构
+typedef struct xx{} xx => 之后就可以直接使用xx 而不需要声明struct xx了
 ```
 
 ```c++
@@ -79,13 +90,33 @@ extern int a, b;
 extern int c;
 extern float f;
 void printSomething();
+
+typedef struct Student {
+    char name[50];
+    int age;
+    char from[50];
+} Student;
+
 int main ()
 {
   // 变量定义
+  int var = 20;
   int a, b;
   int c;
   float f;
- 
+  int *ip;
+
+  ip = &var; // 在指针变量中存储 var 的地址
+  cout << "Value of var variable: "; // 20
+  cout << var << endl;
+  
+  // 输出在指针变量中存储的地址
+  cout << "Address stored in ip variable: "; // hex(0xbfc601ac)
+  cout << ip << endl;
+  
+  // 访问指针中地址的值
+  cout << "Value of *ip variable: "; // 20
+  cout << *ip << endl;
   // 实际初始化
   a = 10;
   b = 20;
@@ -97,6 +128,27 @@ int main ()
   cout << f << endl;
   printSomething();
   return 0;
+  // 基于当前系统的当前日期/时间
+   time_t now = time(0);
+   
+   // 把 now 转换为字符串形式
+   char* dt = ctime(&now);
+ 
+   cout << "本地日期和时间：" << dt << endl;
+ 
+   // 把 now 转换为 tm 结构
+   tm *gmtm = gmtime(&now);
+   dt = asctime(gmtm);
+   cout << "UTC 日期和时间："<< dt << endl;
+
+    Student student{
+            .name="aaa",
+            .age=20,
+            .from = "hefei"
+    };
+    Student *studentPtr = &student;
+    cout << studentPtr->age;
+    cout << student.age;
 }
 
 void printSomething(){}

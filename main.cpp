@@ -18,9 +18,12 @@ int main() {
     //  extern ostream cout;		/// Linked to standard output
     cout << "Hello, World!" << endl; // std::endL => 换行符
     cerr << "测试错误输出\n";
+
+    cout << &ptr << endl;
+
     delete ptr;
 
-    printTypeSize();
+   // printTypeSize();
     return 0;
 }
 
