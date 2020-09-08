@@ -15,7 +15,7 @@ void open(const char *filename, ios::openmode mode);
 #include <iostream>
 using namespace std;
  
-//向文件内部写入数据，并将数据读出
+//向文件内部写入数据 并将数据读出
 void file_wr(void)
 {
     char data[100];
@@ -66,9 +66,9 @@ void file_copy(void)
 ## 异常处理
 
 ```c++
-throw: 当问题出现时，程序会抛出一个异常。这是通过使用 throw 关键字来完成的。
-catch: 在您想要处理问题的地方，通过异常处理程序捕获异常。catch 关键字用于捕获异常。
-try: try 块中的代码标识将被激活的特定异常。它后面通常跟着一个或多个 catch 块。
+throw: 当问题出现时 程序会抛出一个异常 这是通过使用 throw 关键字来完成的 
+catch: 在您想要处理问题的地方 通过异常处理程序捕获异常 catch 关键字用于捕获异常 
+try: try 块中的代码标识将被激活的特定异常 它后面通常跟着一个或多个 catch 块 
 ```
 
 ```c++
@@ -104,8 +104,8 @@ int main ()
 ## 动态内存
 
 ```c++
-栈：在函数内部声明的所有变量都将占用栈内存。
-堆：这是程序中未使用的内存，在程序运行时可用于动态分配内存。
+栈: 在函数内部声明的所有变量都将占用栈内存 
+堆: 这是程序中未使用的内存 在程序运行时可用于动态分配内存 
 
 double* pvalue  = NULL; // 初始化为 null 的指针
 pvalue  = new double;   // 为变量请求内存
@@ -152,12 +152,12 @@ int main ()
 }
 ```
 
-## c++模板
+## c++模板 (相当于interface)
 
 ```c++
-模板是泛型编程的基础，泛型编程即以一种独立于任何特定类型的方式编写代码。
+模板是泛型编程的基础 泛型编程即以一种独立于任何特定类型的方式编写代码 
 typename && class 
-模板是创建泛型类或函数的蓝图或公式。库容器，比如迭代器和算法，都是泛型编程的例子，它们都使用了模板的概念。
+模板是创建泛型类或函数的蓝图或公式 库容器 比如迭代器和算法 都是泛型编程的例子 它们都使用了模板的概念 
 
 #include <iostream>
 #include <string>
@@ -206,7 +206,7 @@ class Stack {
     void push(T const&);  // 入栈
     void pop();               // 出栈
     T top() const;            // 返回栈顶元素
-    bool empty() const{       // 如果为空则返回真。
+    bool empty() const{       // 如果为空则返回真 
         return elems.empty(); 
     } 
 }; 
@@ -259,4 +259,97 @@ int main()
         return -1;
     } 
 }
+```
+
+## 预处理器
+
+```c++
+预处理器是一些指令 指示编译器在实际编译之前所需完成的预处理 
+所有的预处理器指令都是以井号(#)开头 只有空格字符可以出现在预处理指令之前 预处理指令不是 C++ 语句 所以它们不会以分号(;)结尾 
+#include
+#define
+#ifdef NULL
+   #define NULL 0
+#endif
+#if 0
+   不进行编译的代码
+#endif
+
+__LINE__	这会在程序编译时包含当前行号 
+__FILE__	这会在程序编译时包含当前文件名 
+__DATE__	这会包含一个形式为 month/day/year 的字符串 它表示把源文件转换为目标代码的日期 
+__TIME__	这会包含一个形式为 hour:minute:second 的字符串 它表示程序被编译的时间 
+# 和 ## 运算符
+
+# 字符串化的意思 出现在宏定义中的#是把跟在后面的参数转换成一个字符串 
+
+当用作字符串化操作时 # 的主要作用是将宏参数不经扩展地转换成字符串常量 
+
+ 宏定义参数的左右两边的空格会被忽略 参数的各个 Token 之间的多个空格会被转换成一个空格 
+ 宏定义参数中含有需要特殊含义字符如"或,时 它们前面会自动被加上转义字符\\
+## 连接符号 把参数连在一起 
+
+将多个 Token 连接成一个 Token 要点:
+
+ 它不能是宏定义中的第一个或最后一个 Token 
+ 前后的空格可有可无 
+```
+
+## 信号处理
+
+```c++
+SIGABRT	程序的异常终止 如调用 abort 
+SIGFPE	错误的算术运算 比如除以零或导致溢出的操作 
+SIGILL	检测非法指令 
+SIGINT	程序终止(interrupt)信号 
+SIGSEGV	非法访问内存 
+SIGTERM	发送到程序的终止请求 
+void (*signal (int sig, void (*func)(int)))(int); 
+#include <iostream>
+#include <csignal>
+#include <windows.h>
+
+using namespace std;
+
+void signalHandler(int signum)
+{
+    cout << "Interrupt signal (" << signum << ") received.\n";
+
+    // 清理并关闭
+    // 终止程序  
+
+    exit(signum);
+
+}
+
+int main()
+{
+    int i = 0;
+    // 注册信号 SIGINT 和信号处理程序
+    signal(SIGINT, signalHandler);
+
+    while (++i) {
+        cout << "Going to sleep...." << endl;
+        if (i == 3) {
+            raise(SIGINT);
+        }
+        Sleep(1);
+    }
+
+    return 0;
+}
+```
+
+## 多线程
+
+```c++
+基于进程的多任务处理是程序的并发执行 
+基于线程的多任务处理是同一程序的片段的并发执行 
+#include <pthread.h>
+pthread_create (thread, attr, start_routine, arg) 
+pthread_exit (status) 
+thread	指向线程标识符指针 
+attr	一个不透明的属性对象 可以被用来设置线程属性 您可以指定线程属性对象 也可以使用默认值 NULL 
+start_routine	线程运行函数起始地址 一旦线程被创建就会执行 
+arg	运行函数的参数 它必须通过把引用作为指针强制转换为 void 类型进行传递 如果没有传递参数 则使用 NULL 
 ```
