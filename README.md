@@ -153,3 +153,20 @@ int main ()
 
 void printSomething(){}
 ```
+
+## CMAKE_LIST.txt
+
+```c++
+#CMake最低版本号要求
+cmake_minimum_required(VERSION 3.12)
+#项目信息
+project(chapter5_01)
+#使用C++ 11标准
+set(CMAKE_CXX_STANDARD 11)
+#指定生成目标
+add_executable(chapter5_01 main.cpp)
+1.cmake_minimum_required ：指定运行此程序所需要的CMake的最低版本
+2.project ：参数为：'chapter5_01'，表示该项目名称是：chapter5_01
+3.set：参数为：CMAKE_CXX_STANDARD 11，表示：设置C++标准为 C++ 11
+4.add_executable：参数为：chapter5_01和main.cpp，表示：将名为main.cpp的文件编译为名为chapter5_01的可执行文件
+```

@@ -23,12 +23,12 @@ int main() {
 
     delete ptr;
 
-   // printTypeSize();
+    printTypeSize();
     return 0;
 }
 
-void printTypeSize(){
-    cout << "type: \t\t" << "************size**************"<< endl;
+void printTypeSize() {
+    cout << "type: \t\t" << "************size**************" << endl;
     cout << "bool: \t\t" << "所占字节数：" << sizeof(bool);
     cout << "\t最大值：" << (numeric_limits<bool>::max)();
     cout << "\t\t最小值：" << (numeric_limits<bool>::min)() << endl;
@@ -73,6 +73,6 @@ void printTypeSize(){
     cout << "\t最小值：" << (numeric_limits<size_t>::min)() << endl;
     cout << "string: \t" << "所占字节数：" << sizeof(string) << endl;
     // << "\t最大值：" << (numeric_limits<string>::max)() << "\t最小值：" << (numeric_limits<string>::min)() << endl;
-    cout << "type: \t\t" << "************size**************"<< endl;
+    cout << "type: \t\t" << "************size**************" << endl;
 
 }
