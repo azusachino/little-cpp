@@ -6,6 +6,7 @@
 #include <cmath>
 #include <cstring>
 #include <ctime>
+#include "BasicOperate.h"
 
 using namespace std;
 
@@ -36,6 +37,7 @@ typedef struct {
 } Student;
 
 int main() {
+    auto shape = shape
     std::cout << "" << std::endl;
 //    auto ptr = new shape;
 //    delete ptr; // help gc

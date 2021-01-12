@@ -1,5 +1,5 @@
-#ifndef LEARN_CPP_BASICOPERATE_H
-#define LEARN_CPP_BASICOPERATE_H
+#ifndef LEARN_CPP_BASIC_OPERATE_H
+#define LEARN_CPP_BASIC_OPERATE_H
 
 /*class Obj{
 public:
