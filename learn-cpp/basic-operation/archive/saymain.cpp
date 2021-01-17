@@ -6,7 +6,8 @@
 
 int main(int argc, char *argv[]) {
     extern Say librarysay;
-    auto localSay = Say("Local instance of Say");
+    char something[] = {'a', 'b'};
+    auto localSay = Say(something);
     sayHello();
     librarysay.sayThis("howdy");
     librarysay.sayString();
