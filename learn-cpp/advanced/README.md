@@ -2,11 +2,12 @@
 
 ## 文件和流
 
-```c++
-ofstream	该数据类型表示输出文件流 用于创建文件并向文件写入信息
-ifstream	该数据类型表示输入文件流 用于从文件读取信息
-fstream	该数据类型通常表示文件流 且同时具有 ofstream 和 ifstream 两种功能 这意味着它可以创建文件 向文件写入信息 从文件读取信息
+- ofstream:该数据类型表示输出文件流 用于创建文件并向文件写入信息
+- ifstream:该数据类型表示输入文件流 用于从文件读取信息
 
+fstream:该数据类型通常表示文件流 且同时具有 ofstream 和 ifstream 两种功能 这意味着它可以创建文件 向文件写入信息 从文件读取信息
+
+```c++
 void open(const char *filename, ios::openmode mode);
 ```
 
@@ -275,10 +276,10 @@ int main()
    不进行编译的代码
 #endif
 
-__LINE__	这会在程序编译时包含当前行号 
-__FILE__	这会在程序编译时包含当前文件名 
-__DATE__	这会包含一个形式为 month/day/year 的字符串 它表示把源文件转换为目标代码的日期 
-__TIME__	这会包含一个形式为 hour:minute:second 的字符串 它表示程序被编译的时间 
+__LINE__:这会在程序编译时包含当前行号 
+__FILE__:这会在程序编译时包含当前文件名 
+__DATE__:这会包含一个形式为 month/day/year 的字符串 它表示把源文件转换为目标代码的日期 
+__TIME__:这会包含一个形式为 hour:minute:second 的字符串 它表示程序被编译的时间 
 # 和 ## 运算符
 
 # 字符串化的意思 出现在宏定义中的#是把跟在后面的参数转换成一个字符串 
@@ -298,12 +299,12 @@ __TIME__	这会包含一个形式为 hour:minute:second 的字符串 它表示�
 ## 信号处理
 
 ```c++
-SIGABRT	程序的异常终止 如调用 abort 
-SIGFPE	错误的算术运算 比如除以零或导致溢出的操作 
-SIGILL	检测非法指令 
-SIGINT	程序终止(interrupt)信号 
-SIGSEGV	非法访问内存 
-SIGTERM	发送到程序的终止请求 
+SIGABRT:程序的异常终止 如调用 abort 
+SIGFPE:错误的算术运算 比如除以零或导致溢出的操作 
+SIGILL:检测非法指令 
+SIGINT:程序终止(interrupt)信号 
+SIGSEGV:非法访问内存 
+SIGTERM:发送到程序的终止请求 
 void (*signal (int sig, void (*func)(int)))(int); 
 #include <iostream>
 #include <csignal>
@@ -348,8 +349,8 @@ int main()
 #include <pthread.h>
 pthread_create (thread, attr, start_routine, arg) 
 pthread_exit (status) 
-thread	指向线程标识符指针 
-attr	一个不透明的属性对象 可以被用来设置线程属性 您可以指定线程属性对象 也可以使用默认值 NULL 
-start_routine	线程运行函数起始地址 一旦线程被创建就会执行 
-arg	运行函数的参数 它必须通过把引用作为指针强制转换为 void 类型进行传递 如果没有传递参数 则使用 NULL 
+thread:指向线程标识符指针 
+attr:一个不透明的属性对象 可以被用来设置线程属性 您可以指定线程属性对象 也可以使用默认值 NULL 
+start_routine:线程运行函数起始地址 一旦线程被创建就会执行 
+arg:运行函数的参数 它必须通过把引用作为指针强制转换为 void 类型进行传递 如果没有传递参数 则使用 NULL 
 ```
