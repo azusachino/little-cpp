@@ -1,13 +1,16 @@
 #include <iostream>
 
+// 定义一个类
 class Point {
+    // 成员变量
     int x, y;
-public:
+public: // 访问修饰符 private/protected/public
     Point(int a, int b) {
         x = a;
         y = b;
     }
 
+    // 成员方法
     void MovePoint(int a, int b) {
         x += a;
         y += b;
@@ -26,7 +29,7 @@ struct A {
     char a;
 };
 
-struct B : A{
+struct B : A {
     char b;
 };
 
@@ -34,7 +37,8 @@ struct C : public A {
     char c;
 };
 
-int main(){
+int main() {
+    Point point; // 声明对象
     C c{};
     c.c = 1;
 }
