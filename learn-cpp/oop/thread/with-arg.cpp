@@ -5,12 +5,13 @@ using namespace std;
 
 #define NUM_THREADS 5
 
-void *PrintHello(void *threadid) {
+void *PrintHello(void *threadId) {
     // 对传入的参数进行强制类型转换，由无类型指针变为整形数指针，然后再读取
-    int tid = *((int *) threadid);
-    cout << "Hello Runoob! 线程 ID, " << tid << endl;
+    int tid = *((int *) threadId);
+    cout << "Hello Run noob! 线程 ID, " << tid << endl;
     pthread_exit(NULL);
-}
+    return 0;
+};
 
 int main() {
     pthread_t threads[NUM_THREADS];
