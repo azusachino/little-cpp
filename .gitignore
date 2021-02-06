@@ -1,3 +1,5 @@
-/cmake-build-debug/
-/cmake-build-debug-mingw/
-/.idea/
+cmake-build-debug/
+cmake-build-debug-mingw/
+.idea/
+out/
+.vs/
