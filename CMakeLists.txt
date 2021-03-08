@@ -3,5 +3,4 @@ project(little-cpp)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(little-cpp learn-cpp/basic-operation/define/Circle.h learn-cpp/basic-operation/define/Circle.cpp learn-cpp/basic-operation/define/main.cpp learn-cpp/basic-operation/archive/say.cpp learn-cpp/basic-operation/archive/say.h learn-cpp/basic-operation/archive/sayHello.cpp learn-cpp/basic-operation/archive/saymain.cpp "learn-cpp/basic-operation/define/Square.h")
-#add_executable(little-cpp learn-cpp/basic-operation/basic-operations.cpp)
+add_executable(little-cpp "main.cpp" "learn-cpp/primer/chapter02/ptr.cpp" "learn-cpp/primer/chapter02/basic.cpp" "learn-cpp/primer/chapter02/structs.cpp")

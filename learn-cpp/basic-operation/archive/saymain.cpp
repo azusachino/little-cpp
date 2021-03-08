@@ -4,7 +4,7 @@
 
 #include "say.h"
 
-int main(int argc, char *argv[]) {
+int main_(int argc, char *argv[]) {
     extern Say librarysay;
     char something[] = {'a', 'b'};
     auto localSay = Say(something);

@@ -10,6 +10,13 @@ T GetMax(T a, T b) {
     return (result);
 }
 
+template<class G>
+G GetMin(G c, G d) {
+    G ret;
+    ret = (c > d) ? d : c;
+    return (ret);
+};
+
 void test() {
     int i = 5, j = 6, k;
     // 生成int类型的函数
