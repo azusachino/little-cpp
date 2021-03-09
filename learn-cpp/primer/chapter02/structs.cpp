@@ -4,7 +4,7 @@
 using namespace std;
 
 class Sales_data {
-	// ÓÑÔªº¯Êı
+	// é‡è½½æ“ä½œç¬¦
 	friend std::istream& operator >> (std::istream&, Sales_data&);
 	friend std::istream& operator << (std::istream&, Sales_data&);
 	friend std::istream& operator < (std::istream&, Sales_data&);

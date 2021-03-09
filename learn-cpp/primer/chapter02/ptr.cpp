@@ -5,13 +5,13 @@ int main() {
 	int i = 5, j = 10;
 	int* p = &i;
 
-	std::cout << p << " " << *p << std::endl; // µØÖ·1 5
+	std::cout << p << " " << *p << std::endl; // åœ°å€1 5
 	p = &j;
-	std::cout << p << " " << *p << std::endl; // µØÖ·2 10
+	std::cout << p << " " << *p << std::endl; // åœ°å€2 10
 	*p = 20;
-	std::cout << p << " " << *p << std::endl; // µØÖ·2 20
+	std::cout << p << " " << *p << std::endl; // åœ°å€2 20
 	j = 30;
-	std::cout << p << " " << *p << std::endl; // µØÖ·2 30
+	std::cout << p << " " << *p << std::endl; // åœ°å€2 30
 	return 0;
 }
 
@@ -29,19 +29,19 @@ void auto_test() {
 	a = 1;
 	b = 1;
 	c = 1;
-	// d = 1; dÊÇÒ»¸öÖ¸Õë
-	// e = 1; eÊÇÒ»¸öÖ¸Õë
-	// g = 1; // gÊÇÒ»¸ö³£Á¿ÒıÓÃ£¬¸³Öµ·Ç·¨
+	// d = 1; æŒ‡é’ˆ
+	// e = 1; æŒ‡é’ˆ
+	// g = 1;  å¸¸é‡å¼•ç”¨
 
 	std::cout << a << " " << b << " " << c << " " << d << " " << e << " " << g << std::endl;
 }
 
 void type_info() {
-	const int i = 42; // ÕûĞÍ³£Á¿
-	auto j = i; // ÕûÊı
-	const auto& k = i; // ÕûĞÍ³£Á¿
-	auto* p = &i; // Ö¸ÏòÕûĞÍ³£Á¿µÄÖ¸Õë
-	const auto j2 = i, & k2 = i; // j2ÕûÊı£¬k2ÕûÊı
+	const int i = 42; // æ•´å‹å¸¸é‡
+	auto j = i; // æ•´æ•°
+	const auto& k = i; // æ•´å‹å¸¸é‡
+	auto* p = &i; // æŒ‡å‘æ•´å‹å¸¸é‡çš„æŒ‡é’ˆ
+	const auto j2 = i, & k2 = i; // j2æ•´æ•°ï¼Œk2æ•´æ•°
 
 	std::cout << typeid(i).name() << std::endl;
 	std::cout << typeid(j).name() << std::endl;

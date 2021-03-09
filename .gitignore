@@ -3,3 +3,5 @@ cmake-build-debug-mingw/
 .idea/
 out/
 .vs/
+build/
+.vscode/
