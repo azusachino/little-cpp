@@ -151,3 +151,168 @@ private:
 - 首先，在成员函数内查找该名字的声明。和前面一样，只有在函数使用之前出现的声明才被考虑。
 - 如果在成员函数内没有找到，则在类内继续查找，这时类的所有成员都可以被考虑。
 - 如果类内也没找到该名字的声明，在成员函数定义之前的作用域内继续查找。
+
+## 构造函数再探
+
+### 构造函数初始化值列表
+
+原来的版本初始化了它的数据成员，而这个版本是对数据成员执行了赋值操作。
+
+```c++
+Sales_data::Sales_data(const string &s, unsigned cnt, double price)
+{
+    // 皆为赋值操作
+    bookNo = s;
+    units_sold = cnt;
+    revenue = cnt * price;
+}
+```
+
+如果成员是const或者是引用的话，必须将其初始化。当成员属于某种类类型且该类没有定义默认的构造函数时，也必须将该成员初始化。
+
+最好令构造函数初始值的顺序与成员声明的顺序保持一致。而且如果可能的话，尽量避免使用某些成员初始化其他成员。
+
+```c++
+class X {
+    int i;
+    int j;
+public:
+    // i在j之前被初始化
+    X(int val): j(val), i(j) {}
+}
+```
+
+### 委托构造函数
+
+构造函数的重载，复用同一个参数最多的构造函数。
+
+```c++
+Class A
+{
+public:
+    A(string &s, unsigned cnt, double price): bookNo(s),units_sold(cnt), revenue(cnt * price){}
+    A(): A("", 0, 0){}
+    A(string &s): A(s, 0, 0){}
+}
+```
+
+### 默认构造函数的作用
+
+当对象被默认初始化或值初始化时自动执行默认构造函数。
+
+默认初始化：
+
+- 当我们在块作用域内不使用任何初始值定义一个非静态变量或者数组时。
+- 当一个类本身含有类类型的成员且使用合成的默认构造函数时。
+- 当类类型的成员没有在构造函数初始值列表中显式地初始化时。
+
+值初始化：
+
+- 在数组初始化的过程中如果我们提供的初始值数量少于数组的大小时。
+- 当我们不使用初始值定义一个局部静态变量时。
+- 当我们通过书写形如T（ ）的表达式显式地请求值初始化时，其中T是类型名。
+  
+### 隐式的类类型转换
+
+如果构造函数只接受一个实参，则它实际上定义了转换为此类类型的隐式转换机制，有时我们把这种构造函数称作转换构造函数。
+
+```c++
+string null_book = "9-999-999-9";
+// 构造一个临时的sales_data对象
+// 该对象的units_sold和revenue等于0，bookNo等于null_book
+item.combine(null_book);
+```
+
+通过`explicit`阻止隐式的类类型转换
+
+- 只允许一步类类型转换
+- 类类型转换不是总有效
+- 抑制构造函数定义的隐式转换
+- explicit构造函数只能用于直接初始化
+- 为转换显示地使用构造函数(static_cast)
+- 标准库中含有显式构造函数的类
+
+### 聚合类
+
+聚合类（aggregate class）使得用户可以直接访问其成员，并且具有特殊的初始化语法形式。
+
+- 所有成员都是public的。
+- 没有定义任何构造函数。
+- 没有类内初始值
+- 没有基类，也没有virtual函数
+
+```c++
+struct Data{
+    int ival;
+    string s;
+}
+// 可以使用花括号初始化聚合类
+Data val1 = {0, "anna"};
+// 初始值顺序和声明的顺序必须一致
+```
+
+显式初始化类的对象成员三个明显的缺点：
+
+- 要求类的所有成员都是public的。
+- 将正确初始化每个对象的每个成员的重任交给了类的用户（而非类的作者）。因为用户很容易忘掉某个初始值，或者提供一个不恰当的初始值，所以这样的初始化过程冗长乏味且容易出错。
+- 添加或删除一个成员之后，所有的初始化语句都需要更新。
+
+### 字面值常量类
+
+- 数据成员都必须是字面值类型。
+- 类必须至少含有一个constexpr构造函数。
+- 如果一个数据成员含有类内初始值，则内置类型成员的初始值必须是一条常量表达式；或者如果成员属于某种类类型，则初始值必须使用成员自己的constexpr构造函数。
+- 类必须使用析构函数的默认定义，该成员负责销毁类的对象
+
+constexpr构造函数必须初始化所有数据成员，初始值或者使用constexpr构造函数，或者是一条常量表达式。
+
+constexpr构造函数用于生成constexpr对象以及constexpr函数的参数或返回类型
+
+```c++
+class Debug{
+    public:
+    constexpr Debug(bool b = true): hw(b),io(b),other(b){}
+    constexpr Debug(bool h, bool i, bool o): hw(h), io(i), other(o) {}
+    constexpr bool any() {
+        return hw || io || other;
+    }
+    void set_io(bool b){
+        io = b;
+    }
+    void set_hw(bool b){
+        hw = b;
+    }
+    void set_other(bool b) {
+        other = b;
+    }
+    private:
+    bool hw;
+    bool io;
+    bool other;
+}
+```
+
+## 类的静态成员
+
+我们通过在成员的声明之前加上关键字static使得其与类关联在一起。
+
+```c++
+class Account {
+public:
+    void calculate() {
+        amount += amount * interestRate;
+    }
+    static double rate() {
+        return interestRate;
+    }
+    static void rate(double);
+private:
+    string owner;
+    double amount;
+    static double interestRate;
+    static double initRate();
+}
+
+// 使用作用域运算符直接访问静态成员
+double r = Account::rate();
+```
