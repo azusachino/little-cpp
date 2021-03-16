@@ -1,11 +1,11 @@
-# 用于学习CPP的仓库
+# 用于学习 CPP 的仓库
 
-## CPP基础
+## CPP 基础
 
 ### 头文件和源文件
 
-- 头文件(.h)：写类的声明（包括类里面的成员和方法的声明）、函数原型、#define常数等，但一般来说不写出具体的实现。
-- 源文件(.cpp):主要写实现头文件中已经声明的那些函数的具体代码。需要注意的是，开头必须#include一下实现的头文件，以及要用到的头文件。那么当你需要用到自己写的头文件中的类时，只需要#include进来就行了。
+- 头文件(.h)：写类的声明（包括类里面的成员和方法的声明）、函数原型、#define 常数等，但一般来说不写出具体的实现。
+- 源文件(.cpp):主要写实现头文件中已经声明的那些函数的具体代码。需要注意的是，开头必须#include 一下实现的头文件，以及要用到的头文件。那么当你需要用到自己写的头文件中的类时，只需要#include 进来就行了。
 
 ### 定义
 
@@ -24,19 +24,19 @@ C++ 是一种静态类型的、编译式的、通用的、大小写敏感的、�
 - C++ 标准库，提供了大量的函数，用于操作文件、字符串等。
 - 标准模板库（STL），提供了大量的方法，用于操作数据结构等。
 
-最简单的编译方式 -> g++ helloworld.cpp -o helloworld(可执行文件) (在windows就是exe文件)
+最简单的编译方式 -> g++ helloworld.cpp -o helloworld(可执行文件) (在 windows 就是 exe 文件)
 
 ### 数据类型
 
-|类型|关键字|
-|---|---|
-|布尔型|bool|
-|字符型|char|
-|整型|int|
-|浮点型|float|
-|双浮点型|double|
-|无类型|void|
-|宽字符型|wchar_t|
+| 类型     | 关键字  |
+| -------- | ------- |
+| 布尔型   | bool    |
+| 字符型   | char    |
+| 整型     | int     |
+| 浮点型   | float   |
+| 双浮点型 | double  |
+| 无类型   | void    |
+| 宽字符型 | wchar_t |
 
 - 使用 typedef 为一个已有的类型取一个新的名字 -> typedef int feet;
 - 枚举类型 enum color{red, blue=5, green};
@@ -52,13 +52,13 @@ C++ 是一种静态类型的、编译式的、通用的、大小写敏感的、�
 - 在函数参数的定义中声明的变量，称为形式参数。
 - 在所有函数外部声明的变量，称为全局变量。
 
-|数据类型|初始化默认值|
-|-|-|
-|int|0|
-|char | '\0'|
-|float | 0|
-|double|0|
-|pointer|NULL|
+| 数据类型 | 初始化默认值 |
+| -------- | ------------ |
+| int      | 0            |
+| char     | '\0'         |
+| float    | 0            |
+| double   | 0            |
+| pointer  | NULL         |
 
 ### 常量
 
@@ -73,11 +73,11 @@ C++ 是一种静态类型的、编译式的、通用的、大小写敏感的、�
 
 signed、unsigned、long 和 short 可应用于整型，signed 和 unsigned 可应用于字符型，long 可应用于双精度型。
 
-|限定符|含义|
-|---|----|
-|const|const 类型的对象在程序执行期间不能被修改改变。|
-|volatile|修饰符 volatile 告诉编译器不需要优化volatile声明的变量，让程序可以直接从内存中读取变量。对于一般的变量编译器会对变量进行优化，将内存中的变量值放在寄存器中以加快读写效率。|
-|restrict|由 restrict 修饰的指针是唯一一种访问它所指向的对象的方式。只有 C99 增加了新的类型限定符 restrict。
+| 限定符   | 含义                                                                                                                                                                         |
+| -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| const    | const 类型的对象在程序执行期间不能被修改改变。                                                                                                                               |
+| volatile | 修饰符 volatile 告诉编译器不需要优化 volatile 声明的变量，让程序可以直接从内存中读取变量。对于一般的变量编译器会对变量进行优化，将内存中的变量值放在寄存器中以加快读写效率。 |
+| restrict | 由 restrict 修饰的指针是唯一一种访问它所指向的对象的方式。只有 C99 增加了新的类型限定符 restrict。                                                                           |
 
 ### 关键字
 
@@ -109,7 +109,7 @@ auto, register, static, extern, mutable, thread_local (C++11)
 
 - [capture]：捕捉列表。捕捉列表总是出现在 lambda 表达式的开始处。事实上，[] 是 lambda 引出符。编译器根据该引出符判断接下来的代码是否是 lambda 函数。捕捉列表能够捕捉上下文中的变量供 lambda 函数使用。
 - (parameters)：参数列表。与普通函数的参数列表一致。如果不需要参数传递，则可以连同括号 () 一起省略。
--` mutable：mutable 修饰符。默认情况下，lambda 函数总是一个 const 函数，mutable 可以取消其常量性。在使用该修饰符时，参数列表不可省略（即使参数为空）。
+  -` mutable：mutable 修饰符。默认情况下，lambda 函数总是一个 const 函数，mutable 可以取消其常量性。在使用该修饰符时，参数列表不可省略（即使参数为空）。
 - ->return_type：返回类型。用追踪返回类型形式声明函数的返回类型。出于方便，不需要返回值的时候也可以连同符号 -> 一起省略。此外，在返回类型明确的情况下，也可以省略该部分，让编译器对返回类型进行推导。
 - {statement}：函数体。内容与普通函数一样，不过除了可以使用参数之外，还可以使用所有捕获的变量。
 
@@ -133,7 +133,7 @@ char msg[] = "Hello" === char msg[] = {'H', 'e', 'l', 'l', 'o', '\0'};
 - 引用必须在创建时被初始化。指针可以在任何时间被初始化。
 
 struct 定义一种结构
-typedef struct xx{} xx => 之后就可以直接使用xx 而不需要声明struct xx了
+typedef struct xx{} xx => 之后就可以直接使用 xx 而不需要声明 struct xx 了
 
 ### 日期和时间
 
@@ -170,9 +170,7 @@ int main( )
 ### 基本输入输出`<iostream>`
 
 - cout: `cout << "Value of str is : " << str << endl;`
-- cin: `cout << "请输入您的名称： ";
-   cin >> name;
-   cout << "您的名称是： " << name << endl;`
+- cin: `cout << "请输入您的名称： "; cin >> name; cout << "您的名称是： " << name << endl;`
 - cerr: `cerr << "Error message : " << str << endl;`
 - clog: `clog << "Error message : " << str << endl;`
 
@@ -191,14 +189,14 @@ member_type3 member_name3;
 
 ```
 
-----
+---
 
 ```c++
 #include <iostream>
 using namespace std;
 
 // 常量定义
-#define LENGTH 10;  
+#define LENGTH 10;
 const int WIDTH 5;
 
 // 变量声明
@@ -225,11 +223,11 @@ int main ()
   ip = &var; // 在指针变量中存储 var 的地址
   cout << "Value of var variable: "; // 20
   cout << var << endl;
-  
+
   // 输出在指针变量中存储的地址
   cout << "Address stored in ip variable: "; // hex(0xbfc601ac)
   cout << ip << endl;
-  
+
   // 访问指针中地址的值
   cout << "Value of *ip variable: "; // 20
   cout << *ip << endl;
@@ -237,21 +235,21 @@ int main ()
   a = 10;
   b = 20;
   c = a + b;
- 
+
   cout << c << endl;
- 
+
   f = 70.0/3.0;
   cout << f << endl;
   printSomething();
   return 0;
   // 基于当前系统的当前日期/时间
    time_t now = time(0);
-   
+
    // 把 now 转换为字符串形式
    char* dt = ctime(&now);
- 
+
    cout << "本地日期和时间：" << dt << endl;
- 
+
    // 把 now 转换为 tm 结构
    tm *gmtm = gmtime(&now);
    dt = asctime(gmtm);
@@ -286,3 +284,243 @@ add_executable(learn_cpp main.cpp)
 3.set：参数为：CMAKE_CXX_STANDARD 11，表示：设置C++标准为 C++ 11
 4.add_executable：参数为：chapter5_01和main.cpp，表示：将名为main.cpp的文件编译为名为chapter5_01的可执行文件
 ```
+
+## 命名规范
+
+### 1. 通用命名规则
+
+总述
+
+函数命名, 变量命名, 文件命名要有描述性; 少用缩写.
+
+说明
+
+尽可能使用描述性的命名, 别心疼空间, 毕竟相比之下让代码易于新读者理解更重要. 不要用只有项目开发者能理解的缩写, 也不要通过砍掉几个字母来缩写单词.
+
+规范命名
+
+```c++
+int price_count_reader;    // 无缩写
+int num_errors;            // "num" 是一个常见的写法
+int num_dns_connections;   // 人人都知道 "DNS" 是什么
+```
+
+不规范命名
+
+```c++
+int n;                     // 毫无意义.
+int nerr;                  // 含糊不清的缩写.
+int n_comp_conns;          // 含糊不清的缩写.
+int wgc_connections;       // 只有贵团队知道是什么意思.
+int pc_reader;             // "pc" 有太多可能的解释了.
+int cstmr_id;              // 删减了若干字母.
+```
+
+注意, 一些特定的广为人知的缩写是允许的, 例如用 i 表示迭代变量和用 T 表示模板参数.
+
+模板参数的命名应当遵循对应的分类: 类型模板参数应当遵循 类型命名 的规则, 而非类型模板应当遵循 变量命名 的规则.
+
+### 2. 文件命名
+
+总述
+
+文件名要全部小写, 可以包含下划线 () 或连字符 (-), 依照项目的约定. 如果没有约定, 那么 “” 更好.
+
+说明
+
+可接受的文件命名示例:
+
+```bash
+my_useful_class.cc
+my-useful-class.cc
+myusefulclass.cc
+myusefulclass_test.cc // _unittest 和 _regtest 已弃用.
+```
+
+引自 C++ Primer Plus 第五版中文版 P8
+
+C++实现源代码的扩展名
+UNIX ： C、cc、cxx、c
+GNU C++ ：C、cc、cxx、cpp、c++
+Borland C++ ： Cpp
+Microsoft Visual C++ ： cpp、cxx、cc Android 系统源码中以 cc 为后缀
+参考了 C++ Primer Plus 第五版中文版 P8
+
+不要使用已经存在于 /usr/include 下的文件名 (即编译器搜索系统头文件的路径), 如 db.h.
+
+通常应尽量让文件名更加明确. http_server_logs.h 就比 logs.h 要好. 定义类时文件名一般成对出现, 如 foo_bar.h 和 foo_bar.cc, 对应于类 FooBar.
+
+内联函数必须放在 .h 文件中. 如果内联函数比较短, 就直接放在 .h 中.
+
+### 3. 类型命名
+
+总述
+
+类型名称的每个单词首字母均大写, 不包含下划线: MyExcitingClass, MyExcitingEnum.
+
+说明
+
+所有类型命名 —— 类, 结构体, 类型定义 (typedef), 枚举, 类型模板参数 —— 均使用相同约定, 即以大写字母开始, 每个单词首字母均大写, 不包含下划线. 例如:
+
+```c++
+// 类和结构体
+class UrlTable { ...
+class UrlTableTester { ...
+struct UrlTableProperties { ...
+
+// 类型定义
+typedef hash_map<UrlTableProperties *, string> PropertiesMap;
+
+// using 别名
+using PropertiesMap = hash_map<UrlTableProperties *, string>;
+
+// 枚举
+enum UrlTableErrors { ...
+```
+
+### 4. 变量命名
+
+总述
+
+变量 (包括函数参数) 和数据成员名一律小写, 单词之间用下划线连接. 类的成员变量以下划线结尾, 但结构体的就不用, 如: a*local_variable, a_struct_data_member, a_class_data_member*.
+
+说明
+
+普通变量命名
+举例:
+
+```c++
+string table_name;  // 好 - 用下划线.
+string tablename;   // 好 - 全小写.
+
+string tableName;  // 差 - 混合大小写
+```
+
+类数据成员  
+不管是静态的还是非静态的, 类数据成员都可以和普通变量一样, 但要接下划线。
+
+```c++
+class TableInfo {
+  ...
+ private:
+  string table_name_;  // 好 - 后加下划线.
+  string tablename_;   // 好.
+  static Pool<TableInfo>* pool_;  // 好.
+};
+```
+
+结构体变量
+不管是静态的还是非静态的, 结构体数据成员都可以和普通变量一样, 不用像类那样接下划线:
+
+```c++
+struct UrlTableProperties {
+  string name;
+  int num_entries;
+  static Pool<UrlTableProperties>* pool;
+};
+```
+
+### 5. 常量命名
+
+总述
+
+声明为 constexpr 或 const 的变量, 或在程序运行期间其值始终保持不变的, 命名时以 “k” 开头, 大小写混合. 例如:
+
+```c++
+const int kDaysInAWeek = 7;
+```
+
+说明
+
+所有具有静态存储类型的变量 (例如静态变量或全局变量, 参见 存储类型) 都应当以此方式命名. 对于其他存储类型的变量, 如自动变量等, 这条规则是可选的. 如果不采用这条规则, 就按照一般的变量命名规则.
+
+### 6. 函数命名
+
+总述
+
+常规函数使用大小写混合, 取值和设值函数则要求与变量名匹配:
+
+```c++
+MyExcitingFunction()
+MyExcitingMethod()
+my_exciting_member_variable()
+set_my_exciting_member_variable()
+```
+
+说明
+
+一般来说, 函数名的每个单词首字母大写 (即 “驼峰变量名” 或 “帕斯卡变量名”), 没有下划线. 对于首字母缩写的单词, 更倾向于将它们视作一个单词进行首字母大写 (例如, 写作 StartRpc() 而非 StartRPC()).
+
+```c++
+AddTableEntry()
+DeleteUrl()
+OpenFileOrDie()
+```
+
+(同样的命名规则同时适用于类作用域与命名空间作用域的常量, 因为它们是作为 API 的一部分暴露对外的, 因此应当让它们看起来像是一个函数, 因为在这时, 它们实际上是一个对象而非函数的这一事实对外不过是一个无关紧要的实现细节.)
+
+取值和设值函数的命名与变量一致. 一般来说它们的名称与实际的成员变量对应, 但并不强制要求. 例如 int count() 与 void set_count(int count).
+
+### 7. 命名空间命名
+
+总述
+
+命名空间以小写字母命名. 最高级命名空间的名字取决于项目名称. 要注意避免嵌套命名空间的名字之间和常见的顶级命名空间的名字之间发生冲突.
+
+顶级命名空间的名称应当是项目名或者是该命名空间中的代码所属的团队的名字. 命名空间中的代码, 应当存放于和命名空间的名字匹配的文件夹或其子文件夹中.
+
+注意 不使用缩写作为名称 的规则同样适用于命名空间. 命名空间中的代码极少需要涉及命名空间的名称, 因此没有必要在命名空间中使用缩写.
+
+要避免嵌套的命名空间与常见的顶级命名空间发生名称冲突. 由于名称查找规则的存在, 命名空间之间的冲突完全有可能导致编译失败. 尤其是, 不要创建嵌套的 std 命名空间. 建议使用更独特的项目标识符 (websearch::index ，websearch::index_util) 而非常见的极易发生冲突的名称 (比如 websearch::util).
+
+对于 internal 命名空间, 要当心加入到同一 internal 命名空间的代码之间发生冲突 (由于内部维护人员通常来自同一团队, 因此常有可能导致冲突). 在这种情况下, 请使用文件名以使得内部名称独一无二 (例如对于 frobber.h, 使用 websearch::index::frobber_internal).
+
+### 8. 枚举命名
+
+总述
+
+枚举的命名应当和 常量 或 宏 一致: kEnumName 或是 ENUM_NAME.
+
+说明
+
+单独的枚举值应该优先采用 常量 的命名方式. 但 宏 方式的命名也可以接受. 枚举名 UrlTableErrors (以及 AlternateUrlTableErrors) 是类型, 所以要用大小写混合的方式.
+
+```c++
+enum UrlTableErrors {
+    kOK = 0,
+    kErrorOutOfMemory,
+    kErrorMalformedInput,
+};
+enum AlternateUrlTableErrors {
+    OK = 0,
+    OUT_OF_MEMORY = 1,
+    MALFORMED_INPUT = 2,
+};
+```
+
+2009 年 1 月之前, 我们一直建议采用 宏 的方式命名枚举值. 由于枚举值和宏之间的命名冲突, 直接导致了很多问题. 由此, 这里改为优先选择常量风格的命名方式. 新代码应该尽可能优先使用常量风格. 但是老代码没必要切换到常量风格, 除非宏风格确实会产生编译期问题.
+
+### 9. 宏命名
+
+总述
+
+你并不打算 使用宏, 对吧? 如果你一定要用, 像这样命名: MY_MACRO_THAT_SCARES_SMALL_CHILDREN.
+
+说明
+
+参考 预处理宏; 通常 不应该 使用宏. 如果不得不用, 其命名像枚举命名一样全部大写, 使用下划线:
+
+```c++
+#define ROUND(x) ...
+#define PI_ROUNDED 3.0
+```
+
+### 10. 命名规则的特例
+
+如果你命名的实体与已有 C/C++ 实体相似, 可参考现有命名策略.
+
+- bigopen(): 函数名, 参照 open() 的形式
+- uint: typedef
+- bigpos: struct 或 class, 参照 pos 的形式
+- sparse_hash_map: STL 型实体; 参照 STL 命名约定
+- LONGLONG_MAX: 常量, 如同 INT_MAX
