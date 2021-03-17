@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include "window_mgr.h"
 
 using namespace std;
 
