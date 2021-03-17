@@ -93,16 +93,29 @@ void modifyVector()
     {
         v.push_back(rand() % 1000);
     }
-    cout << "generated random numbers are: " <<endl;
-    for (auto it = v.cbegin(); it != v.cend(); it++) {
+    cout << "generated random numbers are: " << endl;
+    for (auto it = v.cbegin(); it != v.cend(); it++)
+    {
         cout << *it << " ";
     }
     cout << endl;
 
-    cout << "after multiply 10: " <<endl;
-    for (auto it = v.begin(); it != v.end(); it++) {
+    cout << "after multiply 10: " << endl;
+    for (auto it = v.begin(); it != v.end(); it++)
+    {
         *it *= 10;
         cout << *it << " ";
     }
     cout << endl;
+}
+
+void initVector()
+{
+    vector<int> v1;              // size 0
+    vector<int> v2(10);          // size 10, elem 0
+    vector<int> v3(10, 42);      // size 10, elem 42
+    vector<int> v4{10};          // size 1, elem 10
+    vector<int> v5{10, 42};      // size 2, elem 10, 42
+    vector<string> v6{10};       // size 10, elem ""
+    vector<string> v7{10, "h1"}; // size 10, elem "hi"
 }

@@ -1,9 +1,10 @@
 #include <iostream>
 #include <typeinfo>
 
-int main() {
+int main()
+{
 	int i = 5, j = 10;
-	int* p = &i;
+	int *p = &i;
 
 	std::cout << p << " " << *p << std::endl; // 地址1 5
 	p = &j;
@@ -15,15 +16,16 @@ int main() {
 	return 0;
 }
 
-void auto_test() {
-	int i = 0, & r = i;
+void auto_test()
+{
+	int i = 0, &r = i;
 	auto a = r;
-	const int ci = i, & cr = ci;
+	const int ci = i, &cr = ci;
 	auto b = ci;
 	auto c = cr;
 	auto d = &i;
 	auto e = &ci;
-	auto& g = ci;
+	auto &g = ci;
 	std::cout << a << " " << b << " " << c << " " << d << " " << e << " " << g << std::endl;
 
 	a = 1;
@@ -36,12 +38,13 @@ void auto_test() {
 	std::cout << a << " " << b << " " << c << " " << d << " " << e << " " << g << std::endl;
 }
 
-void type_info() {
-	const int i = 42; // 整型常量
-	auto j = i; // 整数
-	const auto& k = i; // 整型常量
-	auto* p = &i; // 指向整型常量的指针
-	const auto j2 = i, & k2 = i; // j2整数，k2整数
+void type_info()
+{
+	const int i = 42;			// 整型常量
+	auto j = i;					// 整数
+	const auto &k = i;			// 整型常量
+	auto *p = &i;				// 指向整型常量的指针
+	const auto j2 = i, &k2 = i; // j2整数，k2整数
 
 	std::cout << typeid(i).name() << std::endl;
 	std::cout << typeid(j).name() << std::endl;
@@ -49,4 +52,16 @@ void type_info() {
 	std::cout << typeid(p).name() << std::endl;
 	std::cout << typeid(j2).name() << std::endl;
 	std::cout << typeid(k2).name() << std::endl;
+}
+
+void decl_info()
+{
+	int a = 3; // 整数
+	auto c1 = a; // 整数
+	decltype(a) c2 = a; // int
+	decltype((a)) c3 = a; // int refer
+
+	const int d = 5; // const int
+	auto f1 = d; // int (ignore const)
+	decltype(d) f2 = d; // const int
 }
