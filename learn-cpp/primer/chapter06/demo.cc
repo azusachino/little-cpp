@@ -18,6 +18,10 @@ int fact(int val)
     }
     return ret;
 }
+double myAbs2(double d)
+{
+    return abs(d);
+}
 
 // 在函数体内部通过解引用操作改变指针所指的内容
 void mySwap(int *p, int *q)
