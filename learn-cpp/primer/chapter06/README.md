@@ -1,11 +1,11 @@
-# C++ Primer Chapter06
+# 函数
 
 ## 函数基础
 
-一个典型的函数（function）定义包括以下部分：返回类型（return type）、函数名字、由0个或多个形参（parameter）组成的列表以及函数体。其中，形参以逗号隔开，形参的列表位于一对圆括号之内。函数执行的操作在语句块中说明，该语句块称为函数体（function body）。
+一个典型的函数（function）定义包括以下部分：返回类型（return type）、函数名字、由 0 个或多个形参（parameter）组成的列表以及函数体。其中，形参以逗号隔开，形参的列表位于一对圆括号之内。函数执行的操作在语句块中说明，该语句块称为函数体（function body）。
 
 - 函数调用完成两项工作：一是用实参初始化函数对应的形参，二是将控制权转移给被调用函数。
-- return语句的两项工作：一是返回return语句中的值，二是将控制权从被调函数转移回主调函数。
+- return 语句的两项工作：一是返回 return 语句中的值，二是将控制权从被调函数转移回主调函数。
 
 ### 局部对象
 
@@ -32,7 +32,7 @@
 通过使用引用形参，允许函数改变一个或多个实参的值
 
 使用引用避免拷贝  
-拷贝大的类类型对象或者容器对象比较低效，甚至有的类类型（包括IO类型在内）根本就不支持拷贝操作。当某种类型不支持拷贝操作时，函数只能通过引用形参访问该类型的对象。
+拷贝大的类类型对象或者容器对象比较低效，甚至有的类类型（包括 IO 类型在内）根本就不支持拷贝操作。当某种类型不支持拷贝操作时，函数只能通过引用形参访问该类型的对象。
 
 使用引用形参返回额外信息  
 一个函数只能返回一个值，然而有时函数需要同时返回多个值，引用形参为我们一次返回多个结果提供了有效的途径。
@@ -47,7 +47,7 @@ string::size_type find_char(const string &s, char c, string::size_type &occurs)
     occurs = 0;
     for(decltype(ret) i=0;i != s.size(); ++i)
     {
-        if (s[i] == c) 
+        if (s[i] == c)
         {
             if (ret == s.size())
             {
@@ -61,12 +61,12 @@ string::size_type find_char(const string &s, char c, string::size_type &occurs)
 auto index = find_char(s, 'c', ctr);
 ```
 
-### const形参和实参
+### const 形参和实参
 
-实参初始化形参时会忽略掉顶层const。
+实参初始化形参时会忽略掉顶层 const。
 
 尽量使用常量引用  
-把函数不会改变的形参定义成（普通的）引用是一种比较常见的错误，这么做带给函数的调用者一种误导，即函数可以修改它的实参的值。此外，使用引用而非常量引用也会极大地限制函数所能接受的实参类型。就像刚刚看到的，我们不能把const对象、字面值或者需要类型转换的对象传递给普通的引用形参。
+把函数不会改变的形参定义成（普通的）引用是一种比较常见的错误，这么做带给函数的调用者一种误导，即函数可以修改它的实参的值。此外，使用引用而非常量引用也会极大地限制函数所能接受的实参类型。就像刚刚看到的，我们不能把 const 对象、字面值或者需要类型转换的对象传递给普通的引用形参。
 
 ### 数组形参
 
@@ -82,26 +82,26 @@ auto index = find_char(s, 'c', ctr);
 ### main：处理命令行选项
 
 1. 用户通过设置一组选项来确定函数所要执行的操作`prog -d -o ofile data0`
-2. 通过两个可选的形参传递给main函数`int main(int argc, char *argv[]) {}`
+2. 通过两个可选的形参传递给 main 函数`int main(int argc, char *argv[]) {}`
 
 ### 含有可变形参的函数
 
-如果所有的实参类型相同，可以传递一个名为initializer_list的标准库类型；如果实参的类型不同，我们可以编写一种特殊的函数，也就是所谓的可变参数模板
+如果所有的实参类型相同，可以传递一个名为 initializer_list 的标准库类型；如果实参的类型不同，我们可以编写一种特殊的函数，也就是所谓的可变参数模板
 
-## 返回类型和return语句
+## 返回类型和 return 语句
 
-return语句终止当前正在执行的函数并将控制权返回到调用该函数的地方。return语句有两种形式：
+return 语句终止当前正在执行的函数并将控制权返回到调用该函数的地方。return 语句有两种形式：
 
 - `return;`
 - `return expression;`
 
 ### 无返回值函数
 
-没有返回值的return语句只能用在返回类型是void的函数中。返回void的函数不要求非得有return语句，因为在这类函数的最后一句后面会隐式地执行return。
+没有返回值的 return 语句只能用在返回类型是 void 的函数中。返回 void 的函数不要求非得有 return 语句，因为在这类函数的最后一句后面会隐式地执行 return。
 
 ### 有返回值函数
 
-只要函数的返回类型不是void，则该函数内的每条return语句必须返回一个值。return语句返回值的类型必须与函数的返回类型相同，或者能隐式地转换成函数的返回类型。
+只要函数的返回类型不是 void，则该函数内的每条 return 语句必须返回一个值。return 语句返回值的类型必须与函数的返回类型相同，或者能隐式地转换成函数的返回类型。
 
 ```c++
 // 因为含有不正确的返回值，这段代码无法通过编译
@@ -112,7 +112,7 @@ bool str_subrange(const string &str1, const string &str2)
         return str1 == str2;
     }
     auto size = (str1.size() < str2.size()) ? str1.size() : str2.size();
-    for (decltype(size) i = 0; i != size; ++i) 
+    for (decltype(size) i = 0; i != size; ++i)
     {
         if (str1[i] != str2[i])
         {
@@ -196,7 +196,7 @@ vector<string> process()
 
 不允许两个函数除了返回类型外其他所有的要素都相同。
 
-const_cast和重载
+const_cast 和重载
 
 ```c++
 // 比较两个string对象的长度，返回较短的那个引用
@@ -206,7 +206,7 @@ const string &shorterString(const string &s1, const string &s2)
 }
 
 当它的实参不是常量时，得到的结果是一个普通的引用
-string &shorterString(string &s1, string &s2) 
+string &shorterString(string &s1, string &s2)
 {
     auto &r = shorterString(const_cast<const string&> (s1), const_cast<const string&>s2);
     return const_cast<string&>(r);
@@ -247,7 +247,7 @@ void fooBar(int val)
 
 只要表达式的类型能转换成形参所需的类型，该表达式就能作为默认实参。
 
-### 内联函数和constexpr函数
+### 内联函数和 constexpr 函数
 
 内联函数可以避免函数调用的开销
 
@@ -259,15 +259,15 @@ cout << shorterString(s1, s2) << endl;
 cout<< (s1.size() <= s2.size() ? s1 : s2) << endl;
 ```
 
-constexpr函数（constexpr function）是指能用于常量表达式的函数。
+constexpr 函数（constexpr function）是指能用于常量表达式的函数。
 
-函数的返回类型及所有形参的类型都得是字面值类型，而且函数体中必须有且只有一条return语句。`constexpr int new_sz() { return 42; }`
+函数的返回类型及所有形参的类型都得是字面值类型，而且函数体中必须有且只有一条 return 语句。`constexpr int new_sz() { return 42; }`
 
 ### 调试帮助
 
-assert预处理宏`assert(expr)`: 首先对expr求值，如果表达式为假（即0），assert输出信息并终止程序的执行。如果表达式为真（即非0），assert什么也不做。
+assert 预处理宏`assert(expr)`: 首先对 expr 求值，如果表达式为假（即 0），assert 输出信息并终止程序的执行。如果表达式为真（即非 0），assert 什么也不做。
 
-NDEBUG预处理变量：assert的行为依赖于一个名为NDEBUG的预处理变量的状态。如果定义了NDEBUG，则assert什么也不做。默认状态下没有定义NDEBUG，此时assert将执行运行时检查。
+NDEBUG 预处理变量：assert 的行为依赖于一个名为 NDEBUG 的预处理变量的状态。如果定义了 NDEBUG，则 assert 什么也不做。默认状态下没有定义 NDEBUG，此时 assert 将执行运行时检查。
 
 - `_ _FILE_ _` 存放文件名的字符串字面值。
 - `_ _LINE_ _` 存放当前行号的整型字面值。
@@ -287,9 +287,9 @@ NDEBUG预处理变量：assert的行为依赖于一个名为NDEBUG的预处理�
 
 1. 精确匹配，包括以下情况：
    - 实参类型和形参类型相同。
-   - 实参从数组类型或函数类型转换成对应的指针类型（参见6.7节，第221页，将介绍函数指针）。
-   - 向实参添加顶层const或者从实参中删除顶层const。
-2. 通过const转换实现的匹配。
+   - 实参从数组类型或函数类型转换成对应的指针类型（参见 6.7 节，第 221 页，将介绍函数指针）。
+   - 向实参添加顶层 const 或者从实参中删除顶层 const。
+2. 通过 const 转换实现的匹配。
 3. 通过类型提升实现的匹配。
 4. 通过算术类型转换或指针转换实现的匹配。
 5. 通过类类型转换实现的匹配。
@@ -336,11 +336,11 @@ bool b3 = lengthCompare("hello", "goodbye");
 适合用引用类型的场合：
 
 - 当函数的目的是交换两个参数的内容时应该使用引用类型的形参
-- 当参数是string对象时，为了避免拷贝很长的字符串，应该使用引用类型
+- 当参数是 string 对象时，为了避免拷贝很长的字符串，应该使用引用类型
 
 ### 普通引用作为参数的局限性
 
-一是容易给使用者一种误导，即程序允许修改变量s的内容；二是限制了该函数所能接受的实参类型，我们无法把const对象、字面值常量或者需要进行类型转换的对象传递给普通的引用形参。
+一是容易给使用者一种误导，即程序允许修改变量 s 的内容；二是限制了该函数所能接受的实参类型，我们无法把 const 对象、字面值常量或者需要进行类型转换的对象传递给普通的引用形参。
 
 ### 将数组作为函数形参
 
@@ -350,7 +350,7 @@ bool b3 = lengthCompare("hello", "goodbye");
 - 声明为不限维度的数组
 - 声明为维度确定的数组
 
-### 参数是initializer_list的函数
+### 参数是 initializer_list 的函数
 
 ```c++
 #include <iostream>
