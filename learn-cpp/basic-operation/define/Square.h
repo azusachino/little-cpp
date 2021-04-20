@@ -3,7 +3,9 @@
 
 class Square {
 public:
-	string width;
-	int range();
-	void todo();
+    string width;
+
+    int range();
+
+    void todo();
 };

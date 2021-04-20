@@ -38,7 +38,8 @@ string s3 = "hi"; // s3 is the replica of "hi"
 string s4(10, 'c'); // s4 is cccccccccc
 ```
 
-如果使用等号（=）初始化一个变量，实际上执行的是拷贝初始化（copy initialization），编译器把等号右侧的初始值拷贝到新创建的对象中去。与之相反，如果不使用等号，则执行的是直接初始化（direct initialization）。
+如果使用等号（=）初始化一个变量，实际上执行的是拷贝初始化（copy initialization），编译器把等号右侧的初始值拷贝到新创建的对象中去。与之相反，如果不使用等号，则执行的是直接初始化（direct
+initialization）。
 
 ### 操作 string 对象
 
@@ -123,7 +124,8 @@ v[n]
 
 ## 迭代器介绍
 
-这些类型都拥有名为 begin 和 end 的成员，其中 begin 成员负责返回指向第一个元素（或第一个字符）的迭代器。end 成员返回的迭代器常被称作尾后迭代器（off-the-end iterator）或者简称为尾迭代器（end iterator）。特殊情况下如果容器为空，则 begin 和 end 返回的是同一个迭代器。
+这些类型都拥有名为 begin 和 end 的成员，其中 begin 成员负责返回指向第一个元素（或第一个字符）的迭代器。end 成员返回的迭代器常被称作尾后迭代器（off-the-end iterator）或者简称为尾迭代器（end
+iterator）。特殊情况下如果容器为空，则 begin 和 end 返回的是同一个迭代器。
 
 ```c++
 string s("some string")

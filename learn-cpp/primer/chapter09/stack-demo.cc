@@ -6,8 +6,7 @@
 
 using namespace std;
 
-enum obj_type
-{
+enum obj_type {
     LP,
     RP,
     ADD,
@@ -20,6 +19,7 @@ struct obj {
         t = type;
         v = val;
     }
+
     obj_type t;
     double v;
 };

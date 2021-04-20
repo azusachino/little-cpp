@@ -49,7 +49,8 @@ break 语句（break statement）负责终止离它最近的 while、do while、
 
 ### continue
 
-continue 语句（continue statement）终止最近的循环中的当前迭代并立即开始下一次迭代。continue 语句只能出现在 for、while 和 do while 循环的内部，或者嵌套在此类循环里的语句或块的内部。和 break 语句类似的是，出现在嵌套循环中的 continue 语句也仅作用于离它最近的循环。和 break 语句不同的是，只有当 switch 语句嵌套在迭代语句内部时，才能在 switch 里使用 continue。
+continue 语句（continue statement）终止最近的循环中的当前迭代并立即开始下一次迭代。continue 语句只能出现在 for、while 和 do while 循环的内部，或者嵌套在此类循环里的语句或块的内部。和
+break 语句类似的是，出现在嵌套循环中的 continue 语句也仅作用于离它最近的循环。和 break 语句不同的是，只有当 switch 语句嵌套在迭代语句内部时，才能在 switch 里使用 continue。
 
 ### goto
 
@@ -60,5 +61,6 @@ goto 语句（goto statement）的作用是从 goto 语句无条件跳转到同�
 异常处理包括：
 
 - throw 表达式（throw expression），异常检测部分使用 throw 表达式来表示它遇到了无法处理的问题。我们说 throw 引发（raise）了异常。
-- try 语句块（try block），异常处理部分使用 try 语句块处理异常。try 语句块以关键字 try 开始，并以一个或多个 catch 子句（catch clause）结束。try 语句块中代码抛出的异常通常会被某个 catch 子句处理。因为 catch 子句“处理”异常，所以它们也被称作异常处理代码（exception handler）。
+- try 语句块（try block），异常处理部分使用 try 语句块处理异常。try 语句块以关键字 try 开始，并以一个或多个 catch 子句（catch clause）结束。try 语句块中代码抛出的异常通常会被某个
+  catch 子句处理。因为 catch 子句“处理”异常，所以它们也被称作异常处理代码（exception handler）。
 - 一套异常类（exception class），用于在 throw 表达式和相关的 catch 子句之间传递异常的具体信息。

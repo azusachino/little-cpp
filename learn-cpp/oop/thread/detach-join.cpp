@@ -7,12 +7,11 @@ using namespace std;
 
 #define NUM_THREADS     5
 
-void *wait(void *t)
-{
+void *wait(void *t) {
     int i;
     long tid;
 
-    tid = (long)t;
+    tid = (long) t;
 
     sleep(1);
     cout << "Sleeping in thread " << endl;
@@ -20,8 +19,7 @@ void *wait(void *t)
     pthread_exit(NULL);
 }
 
-int main ()
-{
+int main() {
     int rc;
     int i;
     pthread_t threads[NUM_THREADS];
@@ -32,10 +30,10 @@ int main ()
     pthread_attr_init(&attr);
     pthread_attr_setdetachstate(&attr, PTHREAD_CREATE_JOINABLE);
 
-    for( i=0; i < NUM_THREADS; i++ ){
+    for (i = 0; i < NUM_THREADS; i++) {
         cout << "main() : creating thread, " << i << endl;
-        rc = pthread_create(&threads[i], NULL, wait, (void *)&i );
-        if (rc){
+        rc = pthread_create(&threads[i], NULL, wait, (void *) &i);
+        if (rc) {
             cout << "Error:unable to create thread," << rc << endl;
             exit(-1);
         }
@@ -43,13 +41,13 @@ int main ()
 
     // 删除属性，并等待其他线程
     pthread_attr_destroy(&attr);
-    for( i=0; i < NUM_THREADS; i++ ){
+    for (i = 0; i < NUM_THREADS; i++) {
         rc = pthread_join(threads[i], &status);
-        if (rc){
+        if (rc) {
             cout << "Error:unable to join," << rc << endl;
             exit(-1);
         }
-        cout << "Main: completed thread id :" << i ;
+        cout << "Main: completed thread id :" << i;
         cout << "  exiting with status :" << status << endl;
     }
 

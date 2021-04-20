@@ -3,8 +3,7 @@
 
 using namespace std;
 
-int main()
-{
+int main() {
     int num;
     cin >> num;
     cout << num << "'s factor is " << fact(num) << endl;

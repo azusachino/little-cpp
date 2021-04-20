@@ -123,7 +123,8 @@ sizeof Sales_data::revenue;
 
 `cast-name<type>(expression)`
 
-type 是转换的目标类型而 expression 是要转换的值。如果 type 是引用类型，则结果是左值。cast-name 是 static_cast、dynamic_cast、const_cast 和 reinterpret_cast 中的一种。
+type 是转换的目标类型而 expression 是要转换的值。如果 type 是引用类型，则结果是左值。cast-name 是 static_cast、dynamic_cast、const_cast 和 reinterpret_cast
+中的一种。
 
 ## 习题集
 

@@ -81,8 +81,8 @@ signed、unsigned、long 和 short 可应用于整型，signed 和 unsigned 可�
 
 ### 关键字
 
-存储类定义 C++ 程序中变量/函数的范围（可见性）和生命周期。这些说明符放置在它们所修饰的类型之前。下面列出 C++ 程序中可用的存储类：
-auto, register, static, extern, mutable, thread_local (C++11)
+存储类定义 C++ 程序中变量/函数的范围（可见性）和生命周期。这些说明符放置在它们所修饰的类型之前。下面列出 C++ 程序中可用的存储类： auto, register, static, extern, mutable,
+thread_local (C++11)
 
 - `auto` 关键字用于两种情况：声明变量时根据初始化表达式自动推断该变量的类型、声明函数时函数返回值的占位符。 `auto f = 3.14;`
 - `register` 存储类用于定义存储在寄存器中而不是 RAM 中的局部变量。变量的最大尺寸等于寄存器的大小（通常是一个词），且不能对它应用一元的 '&' 运算符（因为它没有内存位置）。`register int miles;`
@@ -107,9 +107,10 @@ auto, register, static, extern, mutable, thread_local (C++11)
 
 [=,&](int x, int y){ return x < y ; } => = 表示以传值方式, & 表示以引用方式
 
-- [capture]：捕捉列表。捕捉列表总是出现在 lambda 表达式的开始处。事实上，[] 是 lambda 引出符。编译器根据该引出符判断接下来的代码是否是 lambda 函数。捕捉列表能够捕捉上下文中的变量供 lambda 函数使用。
-- (parameters)：参数列表。与普通函数的参数列表一致。如果不需要参数传递，则可以连同括号 () 一起省略。
-  -` mutable：mutable 修饰符。默认情况下，lambda 函数总是一个 const 函数，mutable 可以取消其常量性。在使用该修饰符时，参数列表不可省略（即使参数为空）。
+- [capture]：捕捉列表。捕捉列表总是出现在 lambda 表达式的开始处。事实上，[] 是 lambda 引出符。编译器根据该引出符判断接下来的代码是否是 lambda 函数。捕捉列表能够捕捉上下文中的变量供 lambda
+  函数使用。
+- (parameters)：参数列表。与普通函数的参数列表一致。如果不需要参数传递，则可以连同括号 () 一起省略。 -` mutable：mutable 修饰符。默认情况下，lambda 函数总是一个 const 函数，mutable
+  可以取消其常量性。在使用该修饰符时，参数列表不可省略（即使参数为空）。
 - ->return_type：返回类型。用追踪返回类型形式声明函数的返回类型。出于方便，不需要返回值的时候也可以连同符号 -> 一起省略。此外，在返回类型明确的情况下，也可以省略该部分，让编译器对返回类型进行推导。
 - {statement}：函数体。内容与普通函数一样，不过除了可以使用参数之外，还可以使用所有捕获的变量。
 
@@ -132,8 +133,7 @@ char msg[] = "Hello" === char msg[] = {'H', 'e', 'l', 'l', 'o', '\0'};
 - 一旦引用被初始化为一个对象，就不能被指向到另一个对象。指针可以在任何时候指向到另一个对象。
 - 引用必须在创建时被初始化。指针可以在任何时间被初始化。
 
-struct 定义一种结构
-typedef struct xx{} xx => 之后就可以直接使用 xx 而不需要声明 struct xx 了
+struct 定义一种结构 typedef struct xx{} xx => 之后就可以直接使用 xx 而不需要声明 struct xx 了
 
 ### 日期和时间
 
@@ -339,12 +339,8 @@ myusefulclass_test.cc // _unittest 和 _regtest 已弃用.
 
 引自 C++ Primer Plus 第五版中文版 P8
 
-C++实现源代码的扩展名
-UNIX ： C、cc、cxx、c
-GNU C++ ：C、cc、cxx、cpp、c++
-Borland C++ ： Cpp
-Microsoft Visual C++ ： cpp、cxx、cc Android 系统源码中以 cc 为后缀
-参考了 C++ Primer Plus 第五版中文版 P8
+C++实现源代码的扩展名 UNIX ： C、cc、cxx、c GNU C++ ：C、cc、cxx、cpp、c++ Borland C++ ： Cpp Microsoft Visual C++ ： cpp、cxx、cc Android
+系统源码中以 cc 为后缀 参考了 C++ Primer Plus 第五版中文版 P8
 
 不要使用已经存在于 /usr/include 下的文件名 (即编译器搜索系统头文件的路径), 如 db.h.
 
@@ -382,12 +378,12 @@ enum UrlTableErrors { ...
 
 总述
 
-变量 (包括函数参数) 和数据成员名一律小写, 单词之间用下划线连接. 类的成员变量以下划线结尾, 但结构体的就不用, 如: a*local_variable, a_struct_data_member, a_class_data_member*.
+变量 (包括函数参数) 和数据成员名一律小写, 单词之间用下划线连接. 类的成员变量以下划线结尾, 但结构体的就不用, 如: a*local_variable, a_struct_data_member,
+a_class_data_member*.
 
 说明
 
-普通变量命名
-举例:
+普通变量命名 举例:
 
 ```c++
 string table_name;  // 好 - 用下划线.
@@ -409,8 +405,7 @@ class TableInfo {
 };
 ```
 
-结构体变量
-不管是静态的还是非静态的, 结构体数据成员都可以和普通变量一样, 不用像类那样接下划线:
+结构体变量 不管是静态的还是非静态的, 结构体数据成员都可以和普通变量一样, 不用像类那样接下划线:
 
 ```c++
 struct UrlTableProperties {
@@ -471,9 +466,11 @@ OpenFileOrDie()
 
 注意 不使用缩写作为名称 的规则同样适用于命名空间. 命名空间中的代码极少需要涉及命名空间的名称, 因此没有必要在命名空间中使用缩写.
 
-要避免嵌套的命名空间与常见的顶级命名空间发生名称冲突. 由于名称查找规则的存在, 命名空间之间的冲突完全有可能导致编译失败. 尤其是, 不要创建嵌套的 std 命名空间. 建议使用更独特的项目标识符 (websearch::index ，websearch::index_util) 而非常见的极易发生冲突的名称 (比如 websearch::util).
+要避免嵌套的命名空间与常见的顶级命名空间发生名称冲突. 由于名称查找规则的存在, 命名空间之间的冲突完全有可能导致编译失败. 尤其是, 不要创建嵌套的 std 命名空间. 建议使用更独特的项目标识符 (websearch::index
+，websearch::index_util) 而非常见的极易发生冲突的名称 (比如 websearch::util).
 
-对于 internal 命名空间, 要当心加入到同一 internal 命名空间的代码之间发生冲突 (由于内部维护人员通常来自同一团队, 因此常有可能导致冲突). 在这种情况下, 请使用文件名以使得内部名称独一无二 (例如对于 frobber.h, 使用 websearch::index::frobber_internal).
+对于 internal 命名空间, 要当心加入到同一 internal 命名空间的代码之间发生冲突 (由于内部维护人员通常来自同一团队, 因此常有可能导致冲突). 在这种情况下, 请使用文件名以使得内部名称独一无二 (例如对于
+frobber.h, 使用 websearch::index::frobber_internal).
 
 ### 8. 枚举命名
 
@@ -498,7 +495,8 @@ enum AlternateUrlTableErrors {
 };
 ```
 
-2009 年 1 月之前, 我们一直建议采用 宏 的方式命名枚举值. 由于枚举值和宏之间的命名冲突, 直接导致了很多问题. 由此, 这里改为优先选择常量风格的命名方式. 新代码应该尽可能优先使用常量风格. 但是老代码没必要切换到常量风格, 除非宏风格确实会产生编译期问题.
+2009 年 1 月之前, 我们一直建议采用 宏 的方式命名枚举值. 由于枚举值和宏之间的命名冲突, 直接导致了很多问题. 由此, 这里改为优先选择常量风格的命名方式. 新代码应该尽可能优先使用常量风格. 但是老代码没必要切换到常量风格,
+除非宏风格确实会产生编译期问题.
 
 ### 9. 宏命名
 

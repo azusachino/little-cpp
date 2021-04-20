@@ -58,8 +58,8 @@ int main() {
     // 数字定义
     short s = 10;
     int i = -1000;
-    int i1 = { 0 };
-    int i2{ 0 };
+    int i1 = {0};
+    int i2{0};
     int i3(0);
     long l = 100000;
     float f = 230.47;

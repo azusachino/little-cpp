@@ -3,17 +3,13 @@
 
 using namespace std;
 
-istream &f(istream &in)
-{
+istream &f(istream &in) {
     int v;
-    while (in >> v, !in.eof())
-    {
-        if (in.bad())
-        {
+    while (in >> v, !in.eof()) {
+        if (in.bad()) {
             throw runtime_error("io error");
         }
-        if (in.fail())
-        {
+        if (in.fail()) {
             cerr << "data error" << endl;
             in.clear();
             in.ignore(100, '\n');
@@ -24,8 +20,7 @@ istream &f(istream &in)
     return in;
 }
 
-int main()
-{
+int main() {
     cout << "please input some numbers, end with ctrl + z" << endl;
     f(cin);
     return 0;

@@ -1,10 +1,10 @@
 #include <vector>
 #include "screen.h"
 
-class WindowMgr
-{
+class WindowMgr {
 public:
     using ScreenIndex = vector<Screen>::size_type;
+
     void clear(ScreenIndex);
 
 private:

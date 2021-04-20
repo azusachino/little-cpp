@@ -4,8 +4,7 @@ using namespace std;
 
 #include "str-blob.h"
 
-int main()
-{
+int main() {
     StrBlob sb1;
     {
         StrBlob sb2 = {"a", "b", "c"};

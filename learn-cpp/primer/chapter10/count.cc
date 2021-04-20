@@ -5,13 +5,10 @@
 
 using namespace std;
 
-void count_(vector<int> &vec, int val)
-{
+void count_(vector<int> &vec, int val) {
     int c = 0;
-    for (auto itr = vec.begin(); itr != vec.end(); ++itr)
-    {
-        if (*itr == val)
-        {
+    for (auto itr = vec.begin(); itr != vec.end(); ++itr) {
+        if (*itr == val) {
             c++;
         }
     }
@@ -21,13 +18,11 @@ void count_(vector<int> &vec, int val)
     // cout << accumulate(vec.cbegin(), vec.cend(), 0) << endl;
 }
 
-void ok()
-{
+void ok() {
     list<int> lst;
     vector<int> vec;
 
-    for (int i = 0; i < 10; i++)
-    {
+    for (int i = 0; i < 10; i++) {
         lst.push_back(i);
     }
     // 利用back_inserter
@@ -35,8 +30,7 @@ void ok()
     // copy需要两个容器元素数量一致
 }
 
-void elim_dups(vector<string> &words)
-{
+void elim_dups(vector<string> &words) {
     sort(words.begin(), words.end());
     auto end_unique = unique(words.begin(), words.end());
     words.erase(end_unique, words.end());

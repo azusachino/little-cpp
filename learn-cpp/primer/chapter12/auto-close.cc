@@ -3,38 +3,31 @@
 
 using namespace std;
 
-struct destination
-{
+struct destination {
 };
-struct connection
-{
+struct connection {
 };
 
-connection connect(destination *pd)
-{
+connection connect(destination *pd) {
     cout << "open connection" << endl;
     return connection();
 }
 
-void disconnect(connection c)
-{
+void disconnect(connection c) {
     cout << "close connection" << endl;
 }
 
-void f(destination &d)
-{
+void f(destination &d) {
     cout << "direct connect" << endl;
     connection c = connect(&d);
     cout << endl;
 }
 
-void end_connection(connection *p)
-{
+void end_connection(connection *p) {
     disconnect(*p);
 }
 
-void f1(destination &d)
-{
+void f1(destination &d) {
     cout << " using shared_ptr" << endl;
     connection c = connect(&d);
     // 程序退出，自动清理

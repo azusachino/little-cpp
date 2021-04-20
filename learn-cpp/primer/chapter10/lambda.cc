@@ -7,15 +7,13 @@
 using namespace std;
 using namespace std::placeholders;
 
-void elim_dups(vector<string> &words)
-{
+void elim_dups(vector<string> &words) {
     sort(words.begin(), words.end());
     auto end_unique = unique(words.begin(), words.end());
     words.erase(end_unique, words.end());
 }
 
-void biggies(vector<string> &words, vector<string>::size_type sz)
-{
+void biggies(vector<string> &words, vector<string>::size_type sz) {
     elim_dups(words);
 
     stable_sort(words.begin(), words.end(),
@@ -31,7 +29,7 @@ void biggies(vector<string> &words, vector<string>::size_type sz)
     cout << endl;
 }
 
-void bind_(){
+void bind_() {
     // std::placeholders <functional>
     auto bb = bind(biggies, _1, 5);
 }

@@ -3,19 +3,22 @@
 
 using namespace std;
 
-class Message
-{
+class Message {
     friend class Folder;
+
     friend void swap(Message &, Message &);
 
 public:
     explicit Message(const string &str = "") : contents(str) {}
 
     Message(const Message &);
+
     Message &operator=(const Message &);
+
     ~Message();
 
     void save(Folder &);
+
     void remove(Folder &);
 
 private:
@@ -27,46 +30,37 @@ private:
     void remove_from_folders();
 };
 
-void Message::save(Folder &f)
-{
+void Message::save(Folder &f) {
     folders.insert(&f);
     f.addMsg(this);
 }
 
-void Message::remove(Folder &f)
-{
+void Message::remove(Folder &f) {
     folders.erase(&f);
     f.remMsg(this);
 }
 
-void Message::add_to_folders(const Message &m)
-{
-    for (auto f : m.folders)
-    {
+void Message::add_to_folders(const Message &m) {
+    for (auto f : m.folders) {
         f->addMsg(this);
     }
 }
 
-Message::Message(const Message &m) : contents(m.contents), folders(m.folders)
-{
+Message::Message(const Message &m) : contents(m.contents), folders(m.folders) {
     add_to_folders(m);
 }
 
-void Message::remove_from_folders()
-{
-    for (auto f : folders)
-    {
+void Message::remove_from_folders() {
+    for (auto f : folders) {
         f->remMsg(this);
     }
 }
 
-Message::~Message()
-{
+Message::~Message() {
     remove_from_folders();
 }
 
-Message &Message::operator=(const Message &rhs)
-{
+Message &Message::operator=(const Message &rhs) {
     remove_from_folders();
     contents = rhs.contents;
     folders = rhs.folders;
@@ -74,39 +68,31 @@ Message &Message::operator=(const Message &rhs)
     return *this;
 }
 
-void swap(Message &lhs, Message &rhs)
-{
+void swap(Message &lhs, Message &rhs) {
     using std::swap;
-    for (auto f : lhs.folders)
-    {
+    for (auto f : lhs.folders) {
         f->remMsg(&lhs);
     }
-    for (auto f : rhs.folders)
-    {
+    for (auto f : rhs.folders) {
         f->remMsg(&rhs);
     }
     swap(lhs.folders, rhs.folders);
     swap(lhs.contents, rhs.contents);
-    for (auto f : lhs.folders)
-    {
+    for (auto f : lhs.folders) {
         f->addMsg(&lhs);
     }
-    for (auto f : rhs.folders)
-    {
+    for (auto f : rhs.folders) {
         f->addMsg(&rhs);
     }
 }
 
-class Folder
-{
+class Folder {
 public:
-    void addMsg(Message *m)
-    {
+    void addMsg(Message *m) {
         msgs.insert(m);
     }
 
-    void remMsg(Message *m)
-    {
+    void remMsg(Message *m) {
         msgs.erase(m);
     }
 

@@ -5,13 +5,11 @@
 
 using namespace std;
 
-int main()
-{
+int main() {
     vector<int> vec;
-    srand((unsigned)time(NULL));
+    srand((unsigned) time(NULL));
     cout << "we will generate some elements..." << endl;
-    for (int i = 0; i != 10; ++i)
-    {
+    for (int i = 0; i != 10; ++i) {
         vec.push_back(rand() % 100);
     }
     cout << *vec.begin() << endl;
@@ -22,8 +20,7 @@ int main()
     return 0;
 }
 
-void secretConvert()
-{
+void secretConvert() {
     char cval;
     int ival;
     unsigned int ui;
@@ -36,29 +33,26 @@ void secretConvert()
     cval = ival + fval + dval; // ival转换为float，与fval相加所得的结果转换为double类型，再与dval相加后结果转换为char类型。
 }
 
-void convert()
-{
+void convert() {
     int i;
     double d;
     const string *ps;
     char *pc;
     void *pv;
-    pv = (void *)ps;
+    pv = (void *) ps;
     pv = static_cast<void *>(const_cast<string *>(ps));
     i = int(*pc);
     i = static_cast<int>(*pc);
     pv = &d;
     pv = static_cast<void *>(&d);
-    pc = (char *)pv;
+    pc = (char *) pv;
     pc = static_cast<char *>(pv);
 }
 
-void loop()
-{
+void loop() {
     constexpr int sz = 5;
     int ia[sz] = {1, 2, 3, 4, 5};
-    for (int *ptr = ia, ix = 0; ix != sz && ptr != ia + sz; ++ix, ++ptr)
-    {
+    for (int *ptr = ia, ix = 0; ix != sz && ptr != ia + sz; ++ix, ++ptr) {
         cout << *ptr << endl;
     }
 }

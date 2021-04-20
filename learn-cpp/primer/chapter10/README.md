@@ -54,9 +54,11 @@ void biggies(vector<string> &words, vector<string>::size_type sz)
 
 可调用对象：函数、函数指针、重载了函数调用运算符的类和 lambda 表达式
 
-一个 lambda 表达式表示一个可调用的代码单元。我们可以将其理解为一个未命名的内联函数。与任何函数类似，一个 lambda 具有一个返回类型、一个参数列表和一个函数体。但与函数不同，lambda 可能定义在函数内部。一个 lambda 表达式具有如 `[capture list] (parameter list) -> return type { function body }`
+一个 lambda 表达式表示一个可调用的代码单元。我们可以将其理解为一个未命名的内联函数。与任何函数类似，一个 lambda 具有一个返回类型、一个参数列表和一个函数体。但与函数不同，lambda 可能定义在函数内部。一个 lambda
+表达式具有如 `[capture list] (parameter list) -> return type { function body }`
 
-capture list（捕获列表）是一个 lambda 所在函数中定义的局部变量的列表（通常为空）；return type、parameter list 和 function body 与任何普通函数一样，分别表示返回类型、参数列表和函数体。
+capture list（捕获列表）是一个 lambda 所在函数中定义的局部变量的列表（通常为空）；return type、parameter list 和 function body
+与任何普通函数一样，分别表示返回类型、参数列表和函数体。
 
 ```c++
 auto isShorter = [] (const string &a, const string &b) -> bool {return a.size() < b.size();};
@@ -106,7 +108,8 @@ void fun3() {
 
 可以将 bind 函数看作一个通用的函数适配器，它接受一个可调用对象，生成一个新的可调用对象来“适应”原对象的参数列表。 `auto newCallable = bind(callable, arg_list);`
 
-arg_list 中的参数可能包含形如\_n 的名字，其中 n 是一个整数。这些参数是“占位符”，表示 newCallable 的参数，它们占据了传递给 newCallable 的参数的“位置”。数值 n 表示生成的可调用对象中参数的位置：\_1 为 newCallable 的第一个参数，\_2 为第二个参数，依此类推。
+arg_list 中的参数可能包含形如\_n 的名字，其中 n 是一个整数。这些参数是“占位符”，表示 newCallable 的参数，它们占据了传递给 newCallable 的参数的“位置”。数值 n
+表示生成的可调用对象中参数的位置：\_1 为 newCallable 的第一个参数，\_2 为第二个参数，依此类推。
 
 ```c++
 auto check6 = bind(check_size, _1, 6);
@@ -164,11 +167,14 @@ istream_iterator<string> str_it(in); // 从afile读取字符串
 
 ### 前向迭代器
 
-前向迭代器（forward iterator）：可以读写元素。这类迭代器只能在序列中沿一个方向移动。前向迭代器支持所有输入和输出迭代器的操作，而且可以多次读写同一个元素。因此，我们可以保存前向迭代器的状态，使用前向迭代器的算法可以对序列进行多遍扫描。算法 replace 要求前向迭代器，forward_list 上的迭代器是前向迭代器。
+前向迭代器（forward
+iterator）：可以读写元素。这类迭代器只能在序列中沿一个方向移动。前向迭代器支持所有输入和输出迭代器的操作，而且可以多次读写同一个元素。因此，我们可以保存前向迭代器的状态，使用前向迭代器的算法可以对序列进行多遍扫描。算法
+replace 要求前向迭代器，forward_list 上的迭代器是前向迭代器。
 
 ### 双向迭代器
 
-双向迭代器（bidirectional iterator）：可以正向/反向读写序列中的元素。除了支持所有前向迭代器的操作之外，双向迭代器还支持前置和后置递减运算符（--）。算法 reverse 要求双向迭代器，除了 forward_list 之外，其他标准库都提供符合双向迭代器要求的迭代器。
+双向迭代器（bidirectional iterator）：可以正向/反向读写序列中的元素。除了支持所有前向迭代器的操作之外，双向迭代器还支持前置和后置递减运算符（--）。算法 reverse 要求双向迭代器，除了 forward_list
+之外，其他标准库都提供符合双向迭代器要求的迭代器。
 
 ### 随机访问迭代器
 

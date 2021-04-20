@@ -7,23 +7,23 @@
 
 using namespace std;
 
-class date
-{
+class date {
 public:
     friend ostream &operator<<(ostream &, const date &);
+
     date() = default;
+
     date(string &ds);
 
-    unsigned y() const
-    {
+    unsigned y() const {
         return year;
     }
-    unsigned m() const
-    {
+
+    unsigned m() const {
         return month;
     }
-    unsigned d() const
-    {
+
+    unsigned d() const {
         return day;
     }
 
@@ -35,11 +35,9 @@ const string month_name[] = {""};
 const string month_abbr[] = {""};
 const int days[] = {1};
 
-inline int get_month(string &ds, int &end_of_month)
-{
+inline int get_month(string &ds, int &end_of_month) {
     int i, j;
-    for (i = 0; i < 12; i++)
-    {
+    for (i = 0; i < 12; i++) {
 
     }
 }

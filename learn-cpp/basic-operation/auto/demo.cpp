@@ -1,32 +1,33 @@
-// Á·Ï°autoÀàÐÍËµÃ÷·û
+// ï¿½ï¿½Ï°autoï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½
 
 #include <iostream>
 
 using namespace std;
 
-// typedef »ù±¾ÓÃ·¨
+// typedef ï¿½ï¿½ï¿½ï¿½ï¿½Ã·ï¿½
 typedef size int;
-typedef pstring* char;
+typedef pstring*
+char;
 
 int main() {
-	do_things();
-	return 0;
+    do_things();
+    return 0;
 }
 
 /**
   test auto 
  */
 void auto_things() {
-	auto item = 1 + 2;
-	auto num = 0, * p = &num;
-	cout << num << p << endl;
-	auto sz = 0, pi = 3.14;
+    auto item = 1 + 2;
+    auto num = 0, *p = &num;
+    cout << num << p << endl;
+    auto sz = 0, pi = 3.14;
 
-	int i = 0, & r = i;
+    int i = 0, &r = i;
 
 }
 
 void decltype_things() {
 
-	decltype(f()) sum = x; // sumµÄÀàÐÍ¾ÍÊÇº¯ÊýfµÄ·µ»ØÀàÐÍ
+    decltype(f()) sum = x; // sumï¿½ï¿½ï¿½ï¿½ï¿½Í¾ï¿½ï¿½Çºï¿½ï¿½ï¿½fï¿½Ä·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 }

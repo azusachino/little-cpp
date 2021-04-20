@@ -4,8 +4,7 @@
 
 std::thread::id main_thread_id = std::this_thread::get_id();
 
-void hello()
-{
+void hello() {
     std::cout << "Hello Concurrent World\n";
     if (main_thread_id == std::this_thread::get_id())
         std::cout << "This is the main thread.\n";

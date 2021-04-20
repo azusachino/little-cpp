@@ -10,8 +10,7 @@ using namespace std;
  * 一个文件夹下只放一个main函数
  * @return func result
  */
-int main()
-{
+int main() {
     auto ptr = new vector<int>();
 
     // extern istream cin;		// Linked to standard input
@@ -27,8 +26,7 @@ int main()
     return 0;
 }
 
-void printTypeSize()
-{
+void printTypeSize() {
     cout << "type: \t\t"
          << "************size**************" << endl;
     cout << "bool: \t\t"

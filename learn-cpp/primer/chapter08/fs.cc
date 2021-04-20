@@ -7,45 +7,37 @@
 
 using namespace std;
 
-int main()
-{
+int main() {
     ifstream in("data");
-    if (!in)
-    {
+    if (!in) {
         cerr << "can not open the file" << endl;
         return -1;
     }
     string line;
     vector<string> words;
 
-    while (getline(in, line))
-    {
+    while (getline(in, line)) {
         words.push_back(line);
     }
 
     in.close();
 
     vector<string>::const_iterator it = words.begin();
-    while (it != words.end())
-    {
+    while (it != words.end()) {
         cout << *it << endl;
         ++it;
     }
     return 0;
 }
 
-istream &f(istream &in)
-{
+istream &f(istream &in) {
     string v;
 
-    while (in >> v, !in.eof())
-    {
-        if (in.bad())
-        {
+    while (in >> v, !in.eof()) {
+        if (in.bad()) {
             throw runtime_error("io exception");
         }
-        if (in.fail())
-        {
+        if (in.fail()) {
             cerr << "data wrong" << endl;
             in.clear();
             in.ignore(100, '\n');
