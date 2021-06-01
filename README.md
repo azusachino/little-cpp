@@ -522,3 +522,11 @@ enum AlternateUrlTableErrors {
 - bigpos: struct 或 class, 参照 pos 的形式
 - sparse_hash_map: STL 型实体; 参照 STL 命名约定
 - LONGLONG_MAX: 常量, 如同 INT_MAX
+
+## differences between gcc & g++
+
+- gcc can compile `*.c` or `*.cpp` files as C and C++ respectively
+- g++ can also compile `*.c` and `*.cpp` files, but take both as C++ file
+- If we want to use g++ to link the object files, it automatically links in the STD C++ libraries. The gcc does not do that
+- gcc compiles C files which has fewer predefined macros
+- gcc compiles C++ files with more number of predefined macros, and also g++ compiles with more predefined macros.
