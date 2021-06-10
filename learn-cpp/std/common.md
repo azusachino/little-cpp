@@ -63,3 +63,65 @@
 #include <future> // for errors with async() and futures (since c++11)
 #include <typeinfo> // for bad_cast and bad_typeid
 ```
+
+### 异常类的成员
+
+**what()**:
+
+```c++
+namespace std {
+    class exception {
+        public:
+            virtual const char* what() const noexcept;
+            ...
+    };
+}
+```
+
+- Error code 是一种轻型对象（light-weight object），用来封装差错码值（error code value），后者可能由编译器实现指定（所谓 implementation-specific），不过也有某些差错码是标准化的。
+- Error condition 是一种提供“差错描述之可移植性抽象层”（portable abstrac-tions of error descriptions）的对象。
+
+```c++
+if (ec == std::errc::invalid_argument) {
+    // check for specific error condition
+}
+if (ec == std::future_errc::no_state) {
+    // check for specific error code
+}
+```
+
+### 以 Class exception_ptr 传递异常
+
+```c++
+#include <exception>
+
+std::exception_ptr eptr;
+
+void foo() {
+    try {
+        throw exception;
+    } catch(e) {
+        eptr = std::current_exception();
+    }
+}
+void bar() {
+    if (eptr != nullptr) {
+        std::rethrow_exception(eptr);
+    }
+}
+```
+
+## Callable Object
+
+- 函数
+- 指向成员函数的指针
+- 函数对象
+- lambda
+
+## 并发与多线程
+
+面对被多线程共享的某个标准库类型的某个对象，改动它会造成‘导致不明确行为’的风险。除非该类型的对象被明确指定为‘sharable without data races’或使用者为它提供了一个 locking 机制。
+
+## Allocator
+
+C++标准库在许多地方采用特殊对象处理内存的分配和归还，这样的对象称为 allocator （分配器）。Allocator 表现出一种特殊内存模型（memory model），被当成一种用来把“内存需求”转换为“内存低级调用”的抽象层。
