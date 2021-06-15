@@ -187,3 +187,160 @@ C++11 明确声明不再支持。
 
 - shared_ptr 用来共享拥有权
 - unique_ptr 用来独占拥有权
+
+## 数值的极值
+
+整数常量定义于＜ climits ＞和＜ limits.h ＞，浮点常量定义于＜ cfloat ＞和＜ float.h ＞
+
+### Class numeric_limits<>
+
+```c++
+namespace std {
+    template <typename T>
+    class numeric_limits {
+        public:
+            static constexpr bool is_specialized = false;
+    }
+}
+
+// int
+template<> class numeric_limits<int> {
+    static constexpr bool is_specialized = true;
+    static constexpr int min() noexcept {
+        return -2147483648;
+    }
+    static constexpr int max() noexcept {
+        return 2147483647;
+    }
+    static constexpr int digits = 31;
+}
+```
+
+check [limits](numeric-limits/limits.cc)
+
+## Type Trait & Type Utility
+
+```c++
+template <typename T>
+void foo(const T& val) {
+    if (std::is_pointer<T>::value) {
+        std::cout << "foo() called for a pointer" << std::endl;
+    } else {
+        std::cout << "foo() called for a value" << std::endl;
+    }
+}
+```
+
+by using type trait
+
+```c++
+template <typename T>
+void fool_impl(T val, true_type);
+
+template <typename T>
+void fool_impl(T val, false_type);
+
+template <typename T>
+void foo(T val) {
+    foo_impl(val, std::is_integral<T>());
+}
+```
+
+return a common type
+
+```c++
+template <typename T1, typename T2>
+typename std::common_type<T1, T2>::type min(const T1& x, const T2& y);
+
+template <typename T1, typename T2>
+struct common_type<T1, T2> {
+    typedef decltype(true ? declval<T1>(): declval<T2>()) type;
+}
+```
+
+## support functions
+
+### min max `<algorithm>`
+
+```c++
+namespace std {
+    template <typename T, typename Compare>
+    const T& min(const T& a, const T& b, Compare cmp);
+    template <typename T, typename Compare>
+    T min(initializer_list<T> initlist, Compare cmp);
+}
+```
+
+### swap
+
+```c++
+template <typename T>
+inline void swap(T& a, T& b) ... {
+    T tmp(std::move(a));
+    a = std::move(b);
+    b = std::move(tmp);
+}
+
+// for array since c++ 11
+template <typename T, size_t N>
+void swap(T (&a)[N], T (&b)[N]) noexcept(noexcept(swap(*a, *b)));
+```
+
+### comparison operator
+
+只需定义好＜和==操作符就可以使用它们。只要写上 using namespace std：：rel_ops，下面的四个比较操作符就自动获得了定义。
+
+```c++
+namespace rel_ops {
+    template <typename T>
+    inline bool operator!= (const T& x, const T& y) {
+        return !(x == y);
+    }
+    template <typename T>
+    inline bool operator> (const T& x, const T& y) {
+        return y < x;
+    }
+    template <typename T>
+    inline bool operator<= (const T& x, const T& y) {
+        return !(y < x);
+    }
+    template <typename T>
+    inline bool operator>= (const T& x, const T& y) {
+        return !(x < y);
+    }
+}
+```
+
+## Class ratio 的编译器分数运算
+
+C++标准库提供了一个接口允许你具体指定编译期分数（compile-time frac-tion），并允许对它们执行编译期运算。
+
+check [ratio](ratio/ratio.cc)
+
+## Clock & Timer
+
+Chrono 程序库的设计，是希望能够处理“timer 和 clock 在不同系统中可能不同”的事实，同时也是为了强化时间精准度。
+
+### Duration
+
+```c++
+std::chrono::duration<int> twentySeconds(20);
+std::chrono::duration<double, std::ratio<60>> halfAMinute(0.5);
+std::chrono::duration<long, std::ratio<1, 1000>> oneMillisecond(1);
+
+// C++标准库提供很多类型定义，如
+typedef duration<signed int-type >= 64 bits, nano> nanoSeconds;
+
+std::chrono::seconds twentySeconds(20);
+
+// 通过duration_cast进行隐式转换
+std::chrono::seconds sec(55);
+std::chrono::minutes m1 = sec; // ERROR
+std::chrono::minutes m2 = std::chrono::duration_cast<std::chrono::minutes>(sec); // OK
+```
+
+### Clock & Timepoint
+
+check [clock](chrono/clock.cpp)
+
+## 头文件
