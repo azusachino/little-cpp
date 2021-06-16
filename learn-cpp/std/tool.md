@@ -323,6 +323,8 @@ Chrono 程序库的设计，是希望能够处理“timer 和 clock 在不同系
 
 ### Duration
 
+Duration 指的是在某个时间单位上的一个明确的 tick(片刻数)。
+
 ```c++
 std::chrono::duration<int> twentySeconds(20);
 std::chrono::duration<double, std::ratio<60>> halfAMinute(0.5);
@@ -333,7 +335,7 @@ typedef duration<signed int-type >= 64 bits, nano> nanoSeconds;
 
 std::chrono::seconds twentySeconds(20);
 
-// 通过duration_cast进行隐式转换
+// 隐式转换至一个“较精准的单位类型”永远可行。转换至“较粗糙的单位类型”就不可行了
 std::chrono::seconds sec(55);
 std::chrono::minutes m1 = sec; // ERROR
 std::chrono::minutes m2 = std::chrono::duration_cast<std::chrono::minutes>(sec); // OK
@@ -341,6 +343,43 @@ std::chrono::minutes m2 = std::chrono::duration_cast<std::chrono::minutes>(sec);
 
 ### Clock & Timepoint
 
+Clock 定义出一个 epoch 和一个 tick 周期  
+Timepoint 的意思是一个 duration 和一个 epoch 的组合
+
 check [clock](chrono/clock.cpp)
 
+### Block with Timer
+
+- sleep_for() & sleep_util()
+- try_lock_for() & try_lock_until()
+- wait_for() & wait_until()
+
 ## 头文件
+
+### cstddef
+
+- NULL
+- nullptr_t
+- size_t
+- ptrdiff_t
+- max_align_t
+- offsetof(type, mem)
+
+### cstdlib
+
+- EXIT_SUCCESS
+- EXIT_FAILURE
+- exit(int status)
+- quick_exit(int status)
+- _Exit(int status)
+- abort()
+- atexit(void (*func)())
+- at_quick_exit(void (*func)())
+
+### cstring
+
+- `memchr(const void* ptr, int c, size_t len);` 在ptr所指的前len个byte中找出字符c
+- `memcmp(const void* ptr1, const void* ptr2, size_t len);` 比较ptr1和ptr2所指的前len个byte
+- `memcpy(void* toPtr, const void* fromPtr, size_t len);`
+- `memmove(void* toPtr, const void* fromPtr, size_t len);`
+- `memset(void* ptr, int c, size_t len);`
