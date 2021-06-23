@@ -86,3 +86,17 @@ Reverse iterator 会造成算法逆向操作，其内部将对 increment（递�
 ## User defined GenericFunction
 
 STL是一个可扩充框架。它的意思是你可以写你自己的函数和算法，用以处理集合内的元素。当然这些操作函数也可以是泛化的（generic）。然而，若要在这些操作函数内声明一个合法的迭代器，必须与容器类型相应，因为不同的容器有不同的迭代器。为了协助写出泛型函数，每一个容器类型都提供有若干内部的类型定义。
+
+## Manipulating Algorithm
+
+[remove](stl/remove1.cc)
+
+## 以函数作为算法实参
+
+[foreach](stl/foreach1.cc)
+
+## Lambda
+
+```c++
+std::transform(col.begin(), col.end(), col.begin(), [](double b) {return d*d*d;});
+```
