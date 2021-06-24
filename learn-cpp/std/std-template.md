@@ -85,7 +85,7 @@ Reverse iterator 会造成算法逆向操作，其内部将对 increment（递�
 
 ## User defined GenericFunction
 
-STL是一个可扩充框架。它的意思是你可以写你自己的函数和算法，用以处理集合内的元素。当然这些操作函数也可以是泛化的（generic）。然而，若要在这些操作函数内声明一个合法的迭代器，必须与容器类型相应，因为不同的容器有不同的迭代器。为了协助写出泛型函数，每一个容器类型都提供有若干内部的类型定义。
+STL 是一个可扩充框架。它的意思是你可以写你自己的函数和算法，用以处理集合内的元素。当然这些操作函数也可以是泛化的（generic）。然而，若要在这些操作函数内声明一个合法的迭代器，必须与容器类型相应，因为不同的容器有不同的迭代器。为了协助写出泛型函数，每一个容器类型都提供有若干内部的类型定义。
 
 ## Manipulating Algorithm
 
@@ -99,4 +99,37 @@ STL是一个可扩充框架。它的意思是你可以写你自己的函数和�
 
 ```c++
 std::transform(col.begin(), col.end(), col.begin(), [](double b) {return d*d*d;});
+```
+
+## 函数对象
+
+函数对象是泛型编程（generic programming）强大威力和纯粹抽象概念的又一个例证。只要其行为像函数，它就是个函数。
+
+1. 函数对象是一种带状态的函数
+2. 每个函数对象都有其自己的类型
+3. 函数对象通常比普通函数速度快
+
+## STL 内部错误和异常
+
+```c++
+// iterbug.cc
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+int main() {
+    vector<int> v1;
+    vector<int> v2;
+    // RUNTIME ERROR: beginning is behind the end of the range
+    vector<int>::iterator pos = v1.begin();
+    reverse(++pos, v1.end());
+
+    for (int i = 1; i <= 9; ++i) {
+        v1.push_back(i);
+    }
+
+    // RUNTIME ERROR: overwriting nonexisting elements
+    copy(v1.cbegin(), v1.cend(), v2.begin());
+}
 ```
