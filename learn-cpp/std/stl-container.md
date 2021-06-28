@@ -40,3 +40,22 @@ double linked list
 ## forward list
 
 singly linked list
+
+## set, multiset
+
+### 排序准则
+
+1. 必须是非对称的（antisymmetric）。
+2. 必须是可传递的（transitive）。
+3. 必须是非自反的（irreflexive）。
+4. 必须有等效传递性（transitivity of equivalence）。
+
+## map, multimap
+
+```c++
+  template<typename _Key, typename _Tp, typename _Compare = std::less<_Key>,
+       typename _Allocator = std::allocator<std::pair<const _Key, _Tp> > >
+    class map;
+```
+
+## unordered_container
