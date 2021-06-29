@@ -1,18 +1,12 @@
-#include <iostream>
-#include <string>
 #include <deque>
+#include <iostream>
 #include <stack>
 #include <stdexcept>
+#include <string>
 
 using namespace std;
 
-enum obj_type {
-    LP,
-    RP,
-    ADD,
-    SUB,
-    VAL
-};
+enum obj_type { LP, RP, ADD, SUB, VAL };
 
 struct obj {
     obj(obj_type type, double val = 0) {
@@ -21,7 +15,7 @@ struct obj {
     }
 
     obj_type t;
-    double v;
+    double   v;
 };
 
 inline void skipws(string &exp, size_t &p) {
@@ -44,4 +38,4 @@ inline void new_val(stack<obj> &so, double v) {
     } else {
         throw invalid_argument("missing operator");
     }
-} 
+}

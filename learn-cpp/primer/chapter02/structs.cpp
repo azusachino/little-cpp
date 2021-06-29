@@ -18,23 +18,19 @@ public:
 
     Sales_data(const std::string &book) : bookNo(book) {}
 
-    Sales_data(std::istream &is) {
-        is >> *this;
-    }
+    Sales_data(std::istream &is) { is >> *this; }
 
 public:
     Sales_data &operator+=(const Sales_data &);
 
-    std::string isbn() const {
-        return bookNo;
-    }
+    std::string isbn() const { return bookNo; }
 
 private:
     std::string bookNo;
-    unsigned units_sold = 0;
-    double sellingPrice = 0.0;
-    double realSellPrice = 0.0;
-    double discount = 0.0;
+    unsigned    units_sold    = 0;
+    double      sellingPrice  = 0.0;
+    double      realSellPrice = 0.0;
+    double      discount      = 0.0;
 };
 
 inline bool compareIsbn(const Sales_data &lhs, const Sales_data &rhs) {

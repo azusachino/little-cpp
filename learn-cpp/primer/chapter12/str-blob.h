@@ -1,11 +1,11 @@
 #ifndef STR_BLOB_H
 #define STR_BLOB_H
 
-#include <vector>
-#include <string>
 #include <initializer_list>
 #include <memory>
 #include <stdexcept>
+#include <string>
+#include <vector>
 
 using namespace std;
 
@@ -26,9 +26,7 @@ public:
 
     bool empty() const { return data->empty(); }
 
-    void push_back(const string &t) {
-        data->push_back(t);
-    }
+    void push_back(const string &t) { data->push_back(t); }
 
     void pop_back();
 
@@ -53,7 +51,8 @@ private:
 
 StrBlob::StrBlob() : data(make_shared<vector<string>>()) {}
 
-StrBlob::StrBlob(initializer_list<string> il) : data(make_shared<vector<string>>(il)) {};
+StrBlob::StrBlob(initializer_list<string> il)
+    : data(make_shared<vector<string>>(il)){};
 
 void StrBlob::check(size_type i, const string &msg) const {
     if (i >= data->size()) {
@@ -104,10 +103,11 @@ private:
     shared_ptr<vector<string>> check(size_t, const string &) const;
 
     weak_ptr<vector<string>> wptr;
-    size_t curr;
+    size_t                   curr;
 };
 
-inline shared_ptr<vector<string>> StrBlobPtr::check(size_t i, const string &msg) const {
+inline shared_ptr<vector<string>> StrBlobPtr::check(size_t        i,
+                                                    const string &msg) const {
     auto ret = wptr.lock();
     if (!ret) {
         throw runtime_error("unbound StrBlogPtr");
@@ -135,13 +135,9 @@ inline StrBlobPtr &StrBlobPtr::decr() {
     return *this;
 }
 
-inline StrBlobPtr StrBlob::begin() {
-    return StrBlobPtr(*this);
-}
+inline StrBlobPtr StrBlob::begin() { return StrBlobPtr(*this); }
 
-inline StrBlobPtr StrBlob::end() {
-    return StrBlobPtr(*this, data->size());
-}
+inline StrBlobPtr StrBlob::end() { return StrBlobPtr(*this, data->size()); }
 
 inline bool eq(const StrBlobPtr &l, const StrBlobPtr &r) {
     auto lL = l.wptr.lock(), rL = r.wptr.lock();
@@ -152,8 +148,6 @@ inline bool eq(const StrBlobPtr &l, const StrBlobPtr &r) {
     }
 }
 
-inline bool neq(const StrBlobPtr &l, const StrBlobPtr &r) {
-    return !eq(l, r);
-}
+inline bool neq(const StrBlobPtr &l, const StrBlobPtr &r) { return !eq(l, r); }
 
 #endif

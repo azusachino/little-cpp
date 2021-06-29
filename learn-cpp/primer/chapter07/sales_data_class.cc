@@ -14,22 +14,21 @@ class SalesData {
 public:
     SalesData() = default;
 
-    SalesData(const string &s, unsigned n, double p) : bookNo(s), units_solds(n), revenue(p * n) {}
+    SalesData(const string &s, unsigned n, double p)
+        : bookNo(s), units_solds(n), revenue(p * n) {}
 
     SalesData(const string &s) : bookNo(s) {}
 
     SalesData(istream &);
 
-    string isbn() const {
-        return bookNo;
-    }
+    string isbn() const { return bookNo; }
 
     SalesData &combine(const SalesData &);
 
 private:
-    string bookNo;
+    string   bookNo;
     unsigned units_solds = 0;
-    double revenue = 0.0;
+    double   revenue     = 0.0;
 };
 
 // 非成员组成部分的声明

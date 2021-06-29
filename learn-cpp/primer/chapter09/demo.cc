@@ -1,11 +1,11 @@
-#include <list>
 #include <deque>
+#include <list>
 #include <vector>
 
 using namespace std;
 
 void odd() {
-    list<int> lst = {1, 2, 3, 4, 5, 6, 7, 8};
+    list<int>  lst = {1, 2, 3, 4, 5, 6, 7, 8};
     deque<int> odd_q, even_q;
 
     for (auto iter = lst.cbegin(); iter != lst.cend(); ++iter) {
@@ -18,10 +18,10 @@ void odd() {
 }
 
 void add() {
-    vector<int> iv = {1, 1, 2, 1};
-    int val = 1;
-    vector<int>::iterator itr = iv.begin();
-    int org_size = iv.size(), new_ele = 0;
+    vector<int>           iv       = {1, 1, 2, 1};
+    int                   val      = 1;
+    vector<int>::iterator itr      = iv.begin();
+    int                   org_size = iv.size(), new_ele = 0;
 
     while (itr != (iv.begin() + org_size / 2 + new_ele)) {
         if (*itr == val) {

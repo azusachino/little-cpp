@@ -1,6 +1,7 @@
-#include <iostream>
 #include <cmath>
+#include <iostream>
 #include <string>
+
 #include "chapter06.h"
 
 using namespace std;
@@ -16,28 +17,26 @@ int fact(int val) {
     return ret;
 }
 
-double myAbs2(double d) {
-    return abs(d);
-}
+double myAbs2(double d) { return abs(d); }
 
 // 在函数体内部通过解引用操作改变指针所指的内容
 void mySwap(int *p, int *q) {
     int temp = *p;
-    *p = *q;
-    *q = temp;
+    *p       = *q;
+    *q       = temp;
 }
 
 // 错误的做法：在函数内部交换了两个形参指针本身的值，未能影响实参
 void mySwapWrong(int *p, int *q) {
-    int *tmp = p; // tmp是一个指针
-    p = q;
-    q = tmp;
+    int *tmp = p;  // tmp是一个指针
+    p        = q;
+    q        = tmp;
 }
 
 void mySwap2(int &p, int &q) {
     int tmp = p;
-    p = q;
-    q = tmp;
+    p       = q;
+    q       = tmp;
 }
 
 // 无需改变str，使用常量引用

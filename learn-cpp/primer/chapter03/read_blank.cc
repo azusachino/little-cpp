@@ -1,13 +1,14 @@
+#include <cctype>
 #include <iostream>
 #include <string>
-#include <cctype>
 
 using namespace std;
 
 int main() {
     string word, line;
 
-    cout << "please choose how to read string: 1. per word, 2. per line" << endl;
+    cout << "please choose how to read string: 1. per word, 2. per line"
+         << endl;
     char ch;
     cin >> ch;
     if (ch == '1') {
@@ -44,7 +45,7 @@ void replace() {
     cout << "please input a string, can include space: " << endl;
     getline(cin, s);
     // 一是利用auto关键字推断字符串中每一个元素的类型；二是c必须定义为引用类型，否则无法修改字符串内容。
-    for (auto &c : s) // auto可以换成char
+    for (auto &c : s)  // auto可以换成char
     {
         c = 'X';
     }

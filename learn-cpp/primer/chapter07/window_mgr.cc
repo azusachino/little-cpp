@@ -1,5 +1,6 @@
-#include <vector>
 #include "window_mgr.h"
+
+#include <vector>
 
 using namespace std;
 

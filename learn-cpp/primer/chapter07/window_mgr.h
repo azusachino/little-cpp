@@ -1,4 +1,5 @@
 #include <vector>
+
 #include "screen.h"
 
 class WindowMgr {

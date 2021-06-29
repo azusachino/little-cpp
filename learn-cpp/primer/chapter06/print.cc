@@ -3,9 +3,7 @@
 using namespace std;
 
 // 参数是常量整型指针
-void print1(const int *p) {
-    cout << *p << endl;
-}
+void print1(const int *p) { cout << *p << endl; }
 
 void print2(const int *p, const int sz) {
     int i = 0;

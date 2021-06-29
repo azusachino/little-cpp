@@ -3,19 +3,15 @@
 
 using namespace std;
 
-struct destination {
-};
-struct connection {
-};
+struct destination {};
+struct connection {};
 
 connection connect(destination *pd) {
     cout << "open connection" << endl;
     return connection();
 }
 
-void disconnect(connection c) {
-    cout << "close connection" << endl;
-}
+void disconnect(connection c) { cout << "close connection" << endl; }
 
 void f(destination &d) {
     cout << "direct connect" << endl;
@@ -23,9 +19,7 @@ void f(destination &d) {
     cout << endl;
 }
 
-void end_connection(connection *p) {
-    disconnect(*p);
-}
+void end_connection(connection *p) { disconnect(*p); }
 
 void f1(destination &d) {
     cout << " using shared_ptr" << endl;

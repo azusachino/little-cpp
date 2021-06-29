@@ -1,8 +1,8 @@
 #include <algorithm>
-#include <vector>
-#include <string>
-#include <iostream>
 #include <functional>
+#include <iostream>
+#include <string>
+#include <vector>
 
 using namespace std;
 using namespace std::placeholders;
@@ -16,16 +16,16 @@ void elim_dups(vector<string> &words) {
 void biggies(vector<string> &words, vector<string>::size_type sz) {
     elim_dups(words);
 
-    stable_sort(words.begin(), words.end(),
-                [](const string &a, const string &b) { return a.size() > b.size(); });
+    stable_sort(
+        words.begin(), words.end(),
+        [](const string &a, const string &b) { return a.size() > b.size(); });
 
     auto wc = find_if(words.begin(), words.end(),
                       [sz](const string &a) { return a.size() >= sz; });
 
     auto count = words.end() - wc;
 
-    for_each(wc, words.end(),
-             [](const string &s) { cout << s << " "; });
+    for_each(wc, words.end(), [](const string &s) { cout << s << " "; });
     cout << endl;
 }
 

@@ -1,7 +1,7 @@
+#include <cstdlib>
+#include <ctime>
 #include <iostream>
 #include <vector>
-#include <ctime>
-#include <cstdlib>
 
 using namespace std;
 
@@ -23,35 +23,33 @@ int main() {
 
 vector<int> intVector() {
     vector<int> v;
-    int i;
-    char ctrl;
+    int         i;
+    char        ctrl;
     while (cin >> i) {
         v.push_back(i);
         cout << "are you sure to continue? (y or n)" << endl;
         cin >> ctrl;
-        if (ctrl != 'y' && ctrl != 'Y')
-            break;
+        if (ctrl != 'y' && ctrl != 'Y') break;
     }
     return v;
 }
 
 vector<string> strVector() {
     vector<string> v;
-    string i;
-    char ctrl;
+    string         i;
+    char           ctrl;
     while (cin >> i) {
         v.push_back(i);
         cout << "are you sure to continue? (y or n)" << endl;
         cin >> ctrl;
-        if (ctrl != 'y' && ctrl != 'Y')
-            break;
+        if (ctrl != 'y' && ctrl != 'Y') break;
     }
     return v;
 }
 
 void addLeftAndRight() {
     vector<int> v;
-    int val;
+    int         val;
     cout << "" << endl;
     while (cin >> val) {
         v.push_back(val);
@@ -73,7 +71,7 @@ void addLeftAndRight() {
 
 void modifyVector() {
     vector<int> v;
-    srand((unsigned) time(NULL));
+    srand((unsigned)time(NULL));
     for (int i = 0; i < 10; i++) {
         v.push_back(rand() % 1000);
     }
@@ -92,11 +90,11 @@ void modifyVector() {
 }
 
 void initVector() {
-    vector<int> v1;              // size 0
-    vector<int> v2(10);          // size 10, elem 0
-    vector<int> v3(10, 42);      // size 10, elem 42
-    vector<int> v4{10};          // size 1, elem 10
-    vector<int> v5{10, 42};      // size 2, elem 10, 42
-    vector<string> v6{10};       // size 10, elem ""
-    vector<string> v7{10, "h1"}; // size 10, elem "hi"
+    vector<int>    v1;            // size 0
+    vector<int>    v2(10);        // size 10, elem 0
+    vector<int>    v3(10, 42);    // size 10, elem 42
+    vector<int>    v4{10};        // size 1, elem 10
+    vector<int>    v5{10, 42};    // size 2, elem 10, 42
+    vector<string> v6{10};        // size 10, elem ""
+    vector<string> v7{10, "h1"};  // size 10, elem "hi"
 }

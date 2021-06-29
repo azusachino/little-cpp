@@ -1,7 +1,7 @@
-#include <iostream>
-#include <vector>
-#include <list>
 #include <algorithm>
+#include <iostream>
+#include <list>
+#include <vector>
 
 using namespace std;
 
@@ -19,7 +19,7 @@ void count_(vector<int> &vec, int val) {
 }
 
 void ok() {
-    list<int> lst;
+    list<int>   lst;
     vector<int> vec;
 
     for (int i = 0; i < 10; i++) {

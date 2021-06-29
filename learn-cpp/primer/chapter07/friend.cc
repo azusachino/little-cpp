@@ -17,12 +17,13 @@ class screen {
 private:
     unsigned height = 0, width = 0;
     unsigned cursor = 0;
-    string contents;
+    string   contents;
 
 public:
     screen() = default;
 
-    screen(unsigned ht, unsigned wd, char c) : height(ht), width(wd), contents(ht * wd, c) {}
+    screen(unsigned ht, unsigned wd, char c)
+        : height(ht), width(wd), contents(ht * wd, c) {}
 };
 
 void window_mgr::clear() {

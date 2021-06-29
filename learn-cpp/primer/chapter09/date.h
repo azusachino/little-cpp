@@ -2,8 +2,8 @@
 #define DATE_H_INCLUDED
 
 #include <iostream>
-#include <string>
 #include <stdexcept>
+#include <string>
 
 using namespace std;
 
@@ -15,17 +15,11 @@ public:
 
     date(string &ds);
 
-    unsigned y() const {
-        return year;
-    }
+    unsigned y() const { return year; }
 
-    unsigned m() const {
-        return month;
-    }
+    unsigned m() const { return month; }
 
-    unsigned d() const {
-        return day;
-    }
+    unsigned d() const { return day; }
 
 private:
     unsigned year, month, day;
@@ -33,17 +27,16 @@ private:
 
 const string month_name[] = {""};
 const string month_abbr[] = {""};
-const int days[] = {1};
+const int    days[]       = {1};
 
 inline int get_month(string &ds, int &end_of_month) {
     int i, j;
     for (i = 0; i < 12; i++) {
-
     }
 }
 
 date::date(string &ds) {
-    int p;
+    int    p;
     size_t q;
     if ((p = ds.find_first_of("0123456789")) == string::npos) {
         throw invalid_argument("invalid");

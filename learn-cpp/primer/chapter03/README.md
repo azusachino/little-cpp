@@ -97,7 +97,7 @@ vector<T> v1; // v1是一个空vector，它潜在的元素是T类型的，执行
 vector<T> v2(v1); // v2中包含有v1所有元素的副本
 vector<T> v2 = v1; // 等价于v2(v1)
 vector<T> v3(n, val); // v3包含了n个重复的元素val
-vector<T> v4(n); // v4包含了n个重复地执行了值初始化地对象
+vector<T> v4(n); // v4包含了n个重复地执行了值初始化对象
 vector<T> v5{a,b,c...} == vector<T> v5 = {a,b,c...}
 ```
 
@@ -119,7 +119,7 @@ vector<string> sv(10, "hi"); // 10个string的vector
 v.empty()
 v.size()
 v.push_back()
-v[n]
+v[n] = 3;
 ```
 
 ## 迭代器介绍

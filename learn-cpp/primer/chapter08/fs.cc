@@ -1,9 +1,9 @@
-#include <iostream>
 #include <fstream>
-#include <vector>
-#include <string>
+#include <iostream>
 #include <sstream>
 #include <stdexcept>
+#include <string>
+#include <vector>
 
 using namespace std;
 
@@ -13,7 +13,7 @@ int main() {
         cerr << "can not open the file" << endl;
         return -1;
     }
-    string line;
+    string         line;
     vector<string> words;
 
     while (getline(in, line)) {
