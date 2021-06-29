@@ -10,29 +10,15 @@ public:
      puts("~Obj()");
     }
 };*/
-enum class shape_type {
-    circle,
-    triangle,
-    rectangle,
-    square,
-    oval
-};
+enum class shape_type { circle, triangle, rectangle, square, oval };
 
-class shape {
+class shape {};
 
-};
+class circle : public shape {};
 
-class circle : public shape {
+class triangle : public shape {};
 
-};
-
-class triangle : public shape {
-
-};
-
-class oval : public shape {
-
-};
+class oval : public shape {};
 
 shape *create_shape(shape_type type) {
     switch (type) {
@@ -51,13 +37,9 @@ class shape_wrapper {
 public:
     explicit shape_wrapper(shape *ptr = nullptr) : ptr_(ptr) {}
 
-    ~shape_wrapper() {
-        delete ptr_;
-    }
+    ~shape_wrapper() { delete ptr_; }
 
-    shape *get() const {
-        return ptr_;
-    }
+    shape *get() const { return ptr_; }
 
 private:
     shape *ptr_;
@@ -66,10 +48,11 @@ private:
 class BasicOperate {
 private:
     char a;
-    int b;
+    int  b;
+
 public:
     double c;
-    float d;
+    float  d;
 
     int print(char sth[]) {
         this->a = 'A';
@@ -78,5 +61,4 @@ public:
     }
 };
 
-
-#endif //LEARN_CPP_BASICOPERATE_H
+#endif  // LEARN_CPP_BASICOPERATE_H

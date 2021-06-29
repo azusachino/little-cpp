@@ -4,6 +4,4 @@
 
 #include "say.h"
 
-void sayHello() {
-    std::cout << "Hello from a static library";
-}
+void sayHello() { std::cout << "Hello from a static library"; }

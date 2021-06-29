@@ -12,10 +12,9 @@ void sayHello();
 class Say {
 private:
     char *string;
+
 public:
-    Say(char *str) {
-        string = str;
-    }
+    Say(char *str) { string = str; }
 
     void sayThis(const char *str) {
         std::cout << str << " from a static library\n";
@@ -24,4 +23,4 @@ public:
     void sayString();
 };
 
-#endif //LITTLE_CPP_SAY_H
+#endif  // LITTLE_CPP_SAY_H

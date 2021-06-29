@@ -6,8 +6,8 @@
 
 int main_(int argc, char *argv[]) {
     extern Say librarysay;
-    char something[] = {'a', 'b'};
-    auto localSay = Say(something);
+    char       something[] = {'a', 'b'};
+    auto       localSay    = Say(something);
     sayHello();
     librarysay.sayThis("howdy");
     librarysay.sayString();

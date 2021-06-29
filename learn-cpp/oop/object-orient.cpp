@@ -4,7 +4,8 @@
 class Point {
     // 成员变量
     int x, y;
-public: // 访问修饰符 private/protected/public
+
+public:  // 访问修饰符 private/protected/public
     Point(int a, int b) {
         x = a;
         y = b;
@@ -38,7 +39,7 @@ struct C : public A {
 };
 
 int main() {
-    Point point; // 声明对象
-    C c{};
+    Point point = Point(1, 2);  // 声明对象
+    C     c{};
     c.c = 1;
 }

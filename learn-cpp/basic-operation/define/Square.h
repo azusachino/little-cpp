@@ -1,9 +1,11 @@
 #ifdef LITTLE_CPP_SQUARE_H
 #endif LITTLE_CPP_SQUARE_H
 
+#include <string>
+
 class Square {
 public:
-    string width;
+    std::string width;
 
     int range();
 

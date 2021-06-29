@@ -8,11 +8,11 @@
 
 class Circle {
 private:
-    double r;//半径
+    double r;  //半径
 public:
-    Circle();//构造函数
-    Circle(double R);//构造函数
-    double Area();//求面积函数
+    Circle();          //构造函数
+    Circle(double R);  //构造函数
+    double Area();     //求面积函数
 };
 
-#endif //LITTLE_CPP_CIRCLE_H
+#endif  // LITTLE_CPP_CIRCLE_H

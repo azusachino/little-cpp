@@ -1,17 +1,18 @@
-#include <iostream>
-#include <cstdlib>
 #include <pthread.h>
 #include <unistd.h>
 
+#include <cstdlib>
+#include <iostream>
+
 using namespace std;
 
-#define NUM_THREADS     5
+#define NUM_THREADS 5
 
 void *wait(void *t) {
-    int i;
+    int  i;
     long tid;
 
-    tid = (long) t;
+    tid = (long)t;
 
     sleep(1);
     cout << "Sleeping in thread " << endl;
@@ -20,11 +21,11 @@ void *wait(void *t) {
 }
 
 int main() {
-    int rc;
-    int i;
-    pthread_t threads[NUM_THREADS];
+    int            rc;
+    int            i;
+    pthread_t      threads[NUM_THREADS];
     pthread_attr_t attr;
-    void *status;
+    void *         status;
 
     // 初始化并设置线程为可连接的（joinable）
     pthread_attr_init(&attr);
@@ -32,7 +33,7 @@ int main() {
 
     for (i = 0; i < NUM_THREADS; i++) {
         cout << "main() : creating thread, " << i << endl;
-        rc = pthread_create(&threads[i], NULL, wait, (void *) &i);
+        rc = pthread_create(&threads[i], NULL, wait, (void *)&i);
         if (rc) {
             cout << "Error:unable to create thread," << rc << endl;
             exit(-1);

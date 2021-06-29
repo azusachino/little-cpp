@@ -51,7 +51,7 @@ protected:
 
 int main() {
     cout << "Hello World!" << endl;
-    C c;   //D, B, A ,C
+    C c;  // D, B, A ,C
     cout << sizeof(c) << endl;
     return 0;
 }

@@ -10,7 +10,6 @@
 using namespace std;
 
 int main() {
-
     char data[100];
 
     // 以写模式打开文件
@@ -82,7 +81,7 @@ void file_wr(void) {
 
 //将数据从一文件复制到另一文件中
 void file_copy(void) {
-    char data[100];
+    char     data[100];
     ifstream infile;
     ofstream outfile;
     infile.open("test.txt");
@@ -98,7 +97,7 @@ void file_copy(void) {
 }
 
 //测试上述读写文件，与文件数据复制
-int _tmain(int argc, _TCHAR *argv[]) {
+int _tmain(int argc, char32_t *argv[]) {
     file_wr();
     file_copy();
     return 0;

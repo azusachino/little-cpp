@@ -1,3 +1,4 @@
+#include <memory>
 #include <string>
 
 using namespace std;
@@ -18,21 +19,13 @@ public:
 
     void push_back(const string &);
 
-    size_t size() const {
-        return first_free - elements;
-    }
+    size_t size() const { return first_free - elements; }
 
-    size_t capacity() const {
-        return cap - elements;
-    }
+    size_t capacity() const { return cap - elements; }
 
-    string *begin() const {
-        return elements;
-    }
+    string *begin() const { return elements; }
 
-    string *end() const {
-        return first_free;
-    }
+    string *end() const { return first_free; }
 
 private:
     static allocator<string> alloc;
@@ -59,7 +52,8 @@ void StrVec::push_back(const string &s) {
     alloc.construct(first_free++, s);
 }
 
-pair<string *, string *> StrVec::alloc_n_copy(const string *b, const string *e) {
+pair<string *, string *> StrVec::alloc_n_copy(const string *b,
+                                              const string *e) {
     auto data = alloc.allocate(e - b);
     return {data, uninitialized_copy(b, e, data)};
 }
@@ -75,25 +69,23 @@ void StrVec::free() {
 
 StrVec::StrVec(const StrVec &s) {
     auto newData = alloc_n_copy(s.begin(), s.end());
-    elements = newData.first;
+    elements     = newData.first;
     first_free = cap = newData.second;
 }
 
-StrVec::~StrVec() {
-    free();
-}
+StrVec::~StrVec() { free(); }
 
 StrVec &StrVec::operator=(const StrVec &rhs) {
     auto data = alloc_n_copy(rhs.begin(), rhs.end());
     free();
-    elements = data.first;
+    elements   = data.first;
     first_free = cap = data.second;
 
     return *this;
 }
 
 void StrVec::reallocate() {
-    auto newCap = size() ? 2 * size() : 1;
+    auto newCap  = size() ? 2 * size() : 1;
     auto newData = alloc.allocate(newCap);
 
     auto dest = newData;
@@ -102,22 +94,23 @@ void StrVec::reallocate() {
         alloc.construct(dest++, std::move(*elem++));
     }
     free();
-    elements = newData;
+    elements   = newData;
     first_free = dest;
-    cap = elements + newCap;
+    cap        = elements + newCap;
 }
 
 // 移动构造函数  noexcept（它通知标准库我们的构造函数不抛出任何异常）
-StrVec::StrVec(StrVec &&s) noexcept: elements(s.elements), first_free(s.first_free), cap(s.cap) {
+StrVec::StrVec(StrVec &&s) noexcept
+    : elements(s.elements), first_free(s.first_free), cap(s.cap) {
     s.elements = s.first_free = s.cap = nullptr;
 }
 
 StrVec &StrVec::operator=(StrVec &&rhs) noexcept {
     if (this != &rhs) {
         free();
-        elements = rhs.elements;
-        first_free = rhs.first_free;
-        cap = rhs.cap;
+        elements     = rhs.elements;
+        first_free   = rhs.first_free;
+        cap          = rhs.cap;
         rhs.elements = rhs.first_free = rhs.cap = nullptr;
     }
     return *this;
@@ -125,12 +118,12 @@ StrVec &StrVec::operator=(StrVec &&rhs) noexcept {
 
 void StrVec::reallocate() {
     auto newCap = size() ? 2 * size() : 1;
-    auto first = alloc.allocate(newCap);
+    auto first  = alloc.allocate(newCap);
 
     auto last = uninitialized_copy(make_move_iterator(begin()),
                                    make_move_iterator(end()), first);
     free();
-    elements = first;
+    elements   = first;
     first_free = last;
-    cap = elements + newCap;
+    cap        = elements + newCap;
 }

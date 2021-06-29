@@ -4,22 +4,21 @@
 
 // 泛型编程
 
-#include <iostream>
-#include <vector>
 #include <cstdlib>
-#include <string>
+#include <iostream>
 #include <stdexcept>
+#include <string>
+#include <vector>
 
 using namespace std;
 
 // 函数模板
-template<typename T>
+template <typename T>
 inline T const &Max(T const &a, T const &b) {
     return a < b ? b : a;
 }
 
 int main() {
-
     int i = 39;
     int j = 20;
     cout << "Max(i, j): " << Max(i, j) << endl;
@@ -36,27 +35,27 @@ int main() {
 }
 
 // 类模板
-template<class T>
+template <class T>
 class Stack {
 private:
-    vector<T> elems;     // 元素
+    vector<T> elems;  // 元素
 
 public:
     void push(T const &);  // 入栈
-    void pop();               // 出栈
-    T top() const;            // 返回栈顶元素
-    bool empty() const {       // 如果为空则返回真。
+    void pop();            // 出栈
+    T    top() const;      // 返回栈顶元素
+    bool empty() const {   // 如果为空则返回真。
         return elems.empty();
     }
 };
 
-template<class T>
+template <class T>
 void Stack<T>::push(T const &elem) {
     // 追加传入元素的副本
     elems.push_back(elem);
 }
 
-template<class T>
+template <class T>
 void Stack<T>::pop() {
     if (elems.empty()) {
         throw out_of_range("Stack<>::pop(): empty stack");
@@ -65,7 +64,7 @@ void Stack<T>::pop() {
     elems.pop_back();
 }
 
-template<class T>
+template <class T>
 T Stack<T>::top() const {
     if (elems.empty()) {
         throw out_of_range("Stack<>::top(): empty stack");
@@ -76,8 +75,8 @@ T Stack<T>::top() const {
 
 int main() {
     try {
-        Stack<int> intStack;  // int 类型的栈
-        Stack<string> stringStack;    // string 类型的栈
+        Stack<int>    intStack;     // int 类型的栈
+        Stack<string> stringStack;  // string 类型的栈
 
         // 操作 int 类型的栈
         intStack.push(7);
@@ -88,8 +87,7 @@ int main() {
         cout << stringStack.top() << std::endl;
         stringStack.pop();
         stringStack.pop();
-    }
-    catch (exception const &ex) {
+    } catch (exception const &ex) {
         cerr << "Exception: " << ex.what() << endl;
         return -1;
     }

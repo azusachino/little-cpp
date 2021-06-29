@@ -1,7 +1,17 @@
-#include <string>
 #include <set>
+#include <string>
 
 using namespace std;
+
+class Folder {
+public:
+    void addMsg(Message *m) { msgs.insert(m); }
+
+    void remMsg(Message *m) { msgs.erase(m); }
+
+private:
+    set<Message *> msgs;
+};
 
 class Message {
     friend class Folder;
@@ -22,7 +32,7 @@ public:
     void remove(Folder &);
 
 private:
-    string contents;
+    string        contents;
     set<Folder *> folders;
 
     void add_to_folders(const Message &);
@@ -56,14 +66,12 @@ void Message::remove_from_folders() {
     }
 }
 
-Message::~Message() {
-    remove_from_folders();
-}
+Message::~Message() { remove_from_folders(); }
 
 Message &Message::operator=(const Message &rhs) {
     remove_from_folders();
     contents = rhs.contents;
-    folders = rhs.folders;
+    folders  = rhs.folders;
     add_to_folders(rhs);
     return *this;
 }
@@ -85,17 +93,3 @@ void swap(Message &lhs, Message &rhs) {
         f->addMsg(&rhs);
     }
 }
-
-class Folder {
-public:
-    void addMsg(Message *m) {
-        msgs.insert(m);
-    }
-
-    void remMsg(Message *m) {
-        msgs.erase(m);
-    }
-
-private:
-    set<Message *> msgs;
-};

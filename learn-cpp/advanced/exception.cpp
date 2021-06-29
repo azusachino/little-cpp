@@ -2,8 +2,8 @@
 // Created by ycpang on 2021-02-01.
 //
 
-#include <iostream>
 #include <exception>
+#include <iostream>
 
 using namespace std;
 
@@ -15,27 +15,23 @@ double division(int a, int b) {
 }
 
 struct MyException : public exception {
-    const char *what() const throw() {
-        return "C++ Exception";
-    }
+    const char *what() const throw() { return "C++ Exception"; }
 };
 
 int main() {
     try {
         throw MyException();
-    }
-    catch (MyException &e) {
+    } catch (MyException &e) {
         std::cout << "MyException caught" << std::endl;
         std::cout << e.what() << std::endl;
-    }
-    catch (std::exception &e) {
+    } catch (std::exception &e) {
         //其他的错误
     }
 }
 
 int main() {
-    int x = 50;
-    int y = 0;
+    int    x = 50;
+    int    y = 0;
     double z = 0;
 
     try {
