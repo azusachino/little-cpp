@@ -1,21 +1,20 @@
 cmake_minimum_required(VERSION 3.20.0)
 
-project(little-cpp VERSION 0.0.1 LANGUAGES C CXX)
+project(little-cpp 
+      LANGUAGES C CXX
+      VERSION 0.0.1
+      DESCRIPTION "learning progress of c++")
 
-# C standard can be overridden when this is used as a sub-project.
-if(NOT CMAKE_C_STANDARD)
-  # This project can use C11, but will gracefully decay down to C89.
-  set(CMAKE_C_STANDARD 11)
-  set(CMAKE_C_STANDARD_REQUIRED OFF)
-  set(CMAKE_C_EXTENSIONS OFF)
-endif(NOT CMAKE_C_STANDARD)
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# C++ standard can be overridden when this is used as a sub-project.
-if(NOT CMAKE_CXX_STANDARD)
-  # This project requires C++11.
-  set(CMAKE_CXX_STANDARD 11)
-  set(CMAKE_CXX_STANDARD_REQUIRED ON)
-  set(CMAKE_CXX_EXTENSIONS OFF)
-endif(NOT CMAKE_CXX_STANDARD)
+if(MSVC)
+    add_compile_definitions(_CRT_SECURE_NO_WARNINGS)
+endif(MSVC)
+
+add_subdirectory(practices)
+
+cmake_policy(SET CMP0054 NEW)
+cmake_policy(SET CMP0057 NEW)
 
 add_executable(little-cpp "main.cpp")
