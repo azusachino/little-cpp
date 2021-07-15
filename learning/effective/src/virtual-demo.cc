@@ -12,7 +12,7 @@ Transaction::Transaction()
     logT(); // call virtual logT in constructor
 }
 
-// base class的构造函数执行赵宇derived class构造函数
+// base class的构造函数执行derived class构造函数
 class BuyTransaction : public Transaction
 {
 public:
