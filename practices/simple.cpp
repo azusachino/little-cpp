@@ -5,6 +5,8 @@
 
 using namespace std;
 
+void printTypeSize();
+
 /**
  * 一个文件夹下只放一个main函数
  * @return func result
