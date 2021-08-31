@@ -14,6 +14,8 @@ endif(MSVC)
 
 add_subdirectory(practices)
 
+include_directories(include)
+
 cmake_policy(SET CMP0054 NEW)
 cmake_policy(SET CMP0057 NEW)
 

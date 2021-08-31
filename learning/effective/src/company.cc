@@ -37,8 +37,8 @@ public:
     void sendClearMsg(const MsgInfo& info) {
         // do log before
         std::cout << "before action" << std::endl;
-
-        this->sendClear(info); //调用base class 函数，无法通过编译
+        // there are no arguments to ‘sendClear’ that depend on a template parameter
+        sendClear(info); //调用base class 函数，无法通过编译
 
         std::cout << "after action" << std::endl;
         // do log after
