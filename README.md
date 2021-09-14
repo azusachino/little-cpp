@@ -360,9 +360,12 @@ C++实现源代码的扩展名 UNIX ： C、cc、cxx、c GNU C++ ：C、cc、cxx
 
 ```c++
 // 类和结构体
-class UrlTable { ...
-class UrlTableTester { ...
-struct UrlTableProperties { ...
+class UrlTable {
+...
+class UrlTableTester {
+...
+struct UrlTableProperties {
+...
 
 // 类型定义
 typedef hash_map<UrlTableProperties *, string> PropertiesMap;
@@ -527,6 +530,7 @@ enum AlternateUrlTableErrors {
 
 - gcc can compile `*.c` or `*.cpp` files as C and C++ respectively
 - g++ can also compile `*.c` and `*.cpp` files, but take both as C++ file
-- If we want to use g++ to link the object files, it automatically links in the STD C++ libraries. The gcc does not do that
+- If we want to use g++ to link the object files, it automatically links in the STD C++ libraries. The gcc does not do
+  that
 - gcc compiles C files which has fewer predefined macros
 - gcc compiles C++ files with more number of predefined macros, and also g++ compiles with more predefined macros.
